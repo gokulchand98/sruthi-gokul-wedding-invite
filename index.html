@@ -85,7 +85,7 @@
   <div class="container">
     <header>
       <div class="tag">🚀 The most awaited release is here…</div>
-      <h1>sruu <span class="emoji">❤️</span> Gokul — Wedding</h1>
+      <h1>Sruthi <span class="emoji">❤️</span> Gokul — Wedding</h1>
       <div class="sub">A launch you don't want to miss.</div>
     </header>
 
@@ -124,7 +124,7 @@
       <hr class="hr" />
       <div class="grid">
         <div class="card"><h3>Mehndi / Haldi</h3><p>Colors, music, and marigolds. Casual attire encouraged — bring the vibes.</p></div>
-        <div class="card"><h3>Sangeet</h3><p>Dance, DJ, and desserts. We ship joy and late‑night snacks.</p></div>
+
         <div class="card"><h3>Wedding Ceremony</h3><p>Traditional rituals with a tech twist under the mandap. Ceremony starts at 10:40 PM.</p></div>
       </div>
     </section>
@@ -155,17 +155,6 @@
         <div id="rsvpResult" style="margin-top:10px;color:var(--accent)"></div>
       </form>
       <p class="sub">This demo stores RSVP locally in your browser (no server). Hook it up to Google Sheets/Airtable later.</p>
-    </section>
-
-    <section>
-      <h2>🧩 Developer Notes</h2>
-      <hr class="hr" />
-      <div class="code"><pre><code>// Customize quickly:
-const WEDDING = {
-  dateUTC: "2026-02-26T04:40:00Z", // 10:40 PM CST = 04:40 UTC (adjust as needed)
-  couple: "Sruthi ❤️ Gokul",
-  city: "Dallas, TX"
-};</code></pre></div>
     </section>
 
     <footer>© 2026 Sruthi & Gokul · Built with vanilla HTML/CSS/JS · <span class="pill">#LoveDeployed</span></footer>
@@ -222,7 +211,8 @@ const WEDDING = {
     }
     tick();
     setInterval(tick, 1000);
-// Theme toggle
+
+    // Theme toggle
     function toggleTheme() {
       const cur = document.documentElement.getAttribute('data-theme');
       document.documentElement.setAttribute('data-theme', cur==='light' ? 'dark':'light');
