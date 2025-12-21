@@ -147,6 +147,19 @@
             <label for="guests"># of Guests</label><br/>
             <input id="guests" type="number" min="1" max="6" value="1" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:var(--text)"/>
           </div>
+
+          <div>
+            <label for="phone">Phone</label><br/>
+            <input id="phone" placeholder="469xxxxxxx" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:var(--text)"/>
+          </div>
+          <div>
+            <label for="rsvp">RSVP</label><br/>
+            <select id="rsvp" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:var(--text)">
+              <option value="YES">Yes</option>
+              <option value="NO">No</option>
+              <option value="MAYBE">Maybe</option>
+            </select>
+          </div>
         </div>
         <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
           <button class="btn" onclick="submitRSVP()">Submit RSVP</button>
@@ -154,7 +167,7 @@
         </div>
         <div id="rsvpResult" style="margin-top:10px;color:var(--accent)"></div>
       </form>
-      <p class="sub">This demo stores RSVP locally in your browser (no server). Hook it up to Google Sheets/Airtable later.</p>
+      <p class="sub">RSVP responses are saved to our Google Sheet. You'll receive a calendar invite email if you RSVP “Yes”.</p>
     </section>
 
     <footer>© 2026 Sruthi & Gokul · Built with vanilla HTML/CSS/JS · <span class="pill">#LoveDeployed</span></footer>
@@ -218,19 +231,36 @@
       document.documentElement.setAttribute('data-theme', cur==='light' ? 'dark':'light');
     }
 
-    // Simple RSVP store in localStorage
-    function submitRSVP() {
+    // RSVP → Google Sheets (Apps Script Web App)
+    // Paste your deployed Web App URL below
+    const RSVP_WEB_APP_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+
+    async function submitRSVP() {
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const guests = document.getElementById('guests').value;
+      const phone = (document.getElementById('phone')?.value || "").trim();
+      const rsvp = (document.getElementById('rsvp')?.value || "YES").trim();
+
       if (!name || !email) return;
-      const entry = { name, email, guests, ts: new Date().toISOString() };
-      const key = 'wedding_rsvps_v1';
-      const list = JSON.parse(localStorage.getItem(key) || '[]');
-      list.push(entry);
-      localStorage.setItem(key, JSON.stringify(list));
-      document.getElementById('rsvpResult').textContent = "RSVP saved locally 🎉 (open DevTools → Application → Local Storage to view)";
-      party();
+
+      try {
+        const res = await fetch(RSVP_WEB_APP_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ name, email, phone, guests, rsvp })
+        });
+        const json = await res.json();
+        document.getElementById('rsvpResult').textContent =
+          json.ok
+            ? (rsvp === "YES"
+                ? "RSVP saved ✅ Check your email for the calendar invite 📅"
+                : "RSVP saved ✅ Thank you!")
+            : json.message;
+        if (json.ok && rsvp === "YES") party();
+      } catch (e) {
+        document.getElementById('rsvpResult').textContent = "Could not submit RSVP. Please try again.";
+      }
     }
   </script>
 </body>
