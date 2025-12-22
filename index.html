@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sruthi ❤️ Gokul — Wedding</title>
-
   <style>
     :root {
       --bg: #0f1221;
@@ -13,197 +12,251 @@
       --muted: #a7b0d6;
       --accent: #7cf3c6;
       --accent2: #9da4ff;
+      --danger: #ff7aa2;
+    }
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --card: #f5f7ff;
+      --text: #1b1e35;
+      --muted: #5b6287;
+      --accent: #276ef1;
+      --accent2: #3ccf91;
+      --danger: #d81b60;
     }
 
     html, body { height: 100%; }
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: var(--bg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(124,243,198,0.06), transparent 60%),
+                  radial-gradient(1000px 900px at 100% 0%, rgba(157,164,255,0.07), transparent 50%),
+                  var(--bg);
       color: var(--text);
+      line-height: 1.6;
     }
-
-    .container { max-width: 980px; margin: auto; padding: 24px; }
-    header { text-align: center; padding: 24px 0; }
-    h1 { font-size: 40px; margin-bottom: 8px; }
-    .sub { color: var(--muted); }
-
+    .container { max-width: 980px; margin: 0 auto; padding: 24px; }
+    header { padding: 32px 0 16px; text-align: center; }
+    .tag { display:inline-block; padding:6px 10px; border-radius:999px; background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#0b0f1c; font-weight:700; letter-spacing:0.2px; }
+    h1 { font-size: clamp(28px, 5vw, 48px); margin: 14px 0 8px; }
+    .sub { color: var(--muted); font-size: 15px; }
     .hero {
-      background: var(--card);
-      padding: 20px;
+      margin-top: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), transparent 70%), var(--card);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 16px;
-      margin-top: 20px;
-    }
-
-    .grid {
+      padding: 22px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 16px;
     }
-
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
     .card {
-      background: #1b1f40;
-      padding: 16px;
-      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent 70%), var(--card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 18px;
     }
-
-    .countdown {
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    section { margin-top: 40px; }
-
-    input, select {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #444;
-      background: transparent;
-      color: var(--text);
-    }
-
-    button {
+    .card h3 { margin: 4px 0 8px; font-size: 18px; }
+    .kpi { font-size: 22px; font-weight: 800; color: var(--accent); }
+    .btns { display:flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+    .btn {
       background: linear-gradient(90deg, var(--accent), var(--accent2));
-      border: none;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: bold;
-      cursor: pointer;
+      color: #0b0f1c; font-weight: 700; border: 0; padding: 12px 16px; border-radius: 10px;
+      cursor: pointer; text-decoration: none; display:inline-flex; align-items:center; gap:10px;
     }
-
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      color: var(--muted);
+    .btn.secondary { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.18); }
+    section { margin: 28px 0; }
+    footer { margin: 32px 0 40px; text-align:center; color: var(--muted); }
+    .toggle {
+      position: fixed; right: 16px; bottom: 16px;
+      background: var(--card); color: var(--text); border:1px solid rgba(255,255,255,0.15);
+      border-radius: 999px; padding: 10px 14px; cursor: pointer; box-shadow: 0 6px 30px rgba(0,0,0,0.25);
     }
+    .pill { display:inline-block; padding: 4px 10px; border:1px solid rgba(255,255,255,0.2); border-radius:999px; color:var(--muted); font-size:12px; }
+    .hr { height:1px; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); margin: 18px 0; border:0; }
+    .easter {
+      font-size: 12px; color: var(--muted); text-align:center; margin-top: 8px;
+    }
+    .countdown { font-size: clamp(18px, 4vw, 26px); font-weight: 800; letter-spacing: 0.5px; }
+    .emoji { filter: drop-shadow(0 5px 20px rgba(255,255,255,0.15)); }
   </style>
 </head>
-
 <body>
-<div class="container">
+  <div class="container">
+    <header>
+      <div class="tag">🚀 The most awaited release is here…</div>
+      <h1>Sruthi <span class="emoji">❤️</span> Gokul — Wedding</h1>
+      <div class="sub">A launch you don't want to miss.</div>
+    </header>
 
-<header>
-  <h1>Sruthi ❤️ Gokul — Wedding</h1>
-  <div class="sub">We can’t wait to celebrate with you</div>
-</header>
-
-<div class="hero">
-  <div class="grid">
-    <div class="card">
-      <h3>📅 Wedding Date</h3>
-      <p>Feb 25, 2026 @ 10:40 PM</p>
-      <div id="count" class="countdown">Loading countdown…</div>
+    <div class="hero">
+      <div class="grid">
+        <div class="card">
+          <span class="pill">Release Notes</span>
+          <h3>Our Story</h3>
+          <p>Two engineers, one repo. After countless commits, PR reviews, and long sprints, we're ready to merge our branches — permanently.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Launch Date</span>
+          <h3>Feb 25, 2026 @ 10:40 PM</h3>
+          <div class="countdown" id="count">Loading countdown…</div>
+        </div>
+        <div class="card">
+          <span class="pill">Deployment Location</span>
+          <h3>Dallas, TX</h3>
+          <p>Exact venue details & parking will appear after RSVP.</p>
+        </div>
+        <div class="card">
+          <span class="pill">Contributors</span>
+          <h3>Family & Friends</h3>
+          <p>Thank you for reviewing our journey and shipping love to prod. #LoveDeployed</p>
+        </div>
+      </div>
+      <div class="btns">
+        <a class="btn" href="#rsvp">RSVP Now</a>
+        <a class="btn secondary" href="#schedule">View Schedule</a>
+      </div>
+      <div class="easter">Psst… open your browser console for a surprise.</div>
     </div>
 
-    <div class="card">
-      <h3>📍 Location</h3>
-      <p>Dallas, Texas</p>
-    </div>
+    <section id="schedule">
+      <h2>📅 Schedule</h2>
+      <hr class="hr" />
+      <div class="grid">
+        <div class="card"><h3>Mehndi / Haldi</h3><p>Colors, music, and marigolds. Casual attire encouraged — bring the vibes.</p></div>
+        <div class="card"><h3>Wedding Ceremony</h3><p>Traditional rituals with a tech twist under the mandap. Ceremony starts at 10:40 PM.</p></div>
+      </div>
+    </section>
 
-    <div class="card">
-      <h3>💍 Ceremony</h3>
-      <p>Traditional South Indian Wedding</p>
-    </div>
+    <section id="rsvp">
+      <h2>🛠️ RSVP</h2>
+      <hr class="hr" />
+      <p>Tell us if you're coming so we can scale the infra accordingly.</p>
+      <form id="rsvpForm" class="card" onsubmit="return false;">
+        <div class="grid">
+          <div>
+            <label for="name">Name</label><br/>
+            <input id="name" required placeholder="Your name" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:var(--text)"/>
+          </div>
+          <div>
+            <label for="email">Email</label><br/>
+            <input id="email" type="email" required placeholder="you@example.com" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:var(--text)"/>
+          </div>
+          <div>
+            <label for="guests"># of Guests</label><br/>
+            <input id="guests" type="number" min="1" max="6" value="1" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:var(--text)"/>
+          </div>
+
+          <div>
+            <label for="phone">Phone</label><br/>
+            <input id="phone" placeholder="469xxxxxxx" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:var(--text)"/>
+          </div>
+          <div>
+            <label for="rsvp">RSVP</label><br/>
+            <select id="rsvp" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:var(--text)">
+              <option value="YES">Yes</option>
+              <option value="NO">No</option>
+              <option value="MAYBE">Maybe</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn" onclick="submitRSVP()">Submit RSVP</button>
+          <button class="btn secondary" type="reset">Reset</button>
+        </div>
+        <div id="rsvpResult" style="margin-top:10px;color:var(--accent)"></div>
+      </form>
+      <p class="sub">RSVP responses are saved to our Google Sheet. You'll receive a calendar invite email if you RSVP “Yes”.</p>
+    </section>
+
+    <footer>© 2026 Sruthi & Gokul · Built with vanilla HTML/CSS/JS · <span class="pill">#LoveDeployed</span></footer>
   </div>
-</div>
 
-<section id="rsvp">
-  <h2>RSVP</h2>
+  <button class="toggle" onclick="toggleTheme()">🌗 Theme</button>
 
-  <form onsubmit="return false;" class="card">
-    <div class="grid">
-      <div>
-        <label>Name</label>
-        <input id="name" required>
-      </div>
+  <script>
+    // Console easter egg
+    console.log("%c Welcome to the wedding console! ",
+      "background: linear-gradient(90deg,#7cf3c6,#9da4ff); color:#0b0f1c; padding:6px 10px; border-radius:8px; font-weight:700;");
+    console.log("Date: Feb 25, 2026 · Time: 10:40 PM · Venue: Dallas, TX");
+    console.log("Type `party()` for confetti ✨");
 
-      <div>
-        <label>Email</label>
-        <input id="email" type="email" required>
-      </div>
-
-      <div>
-        <label>Phone</label>
-        <input id="phone">
-      </div>
-
-      <div>
-        <label># of Guests</label>
-        <input id="guests" type="number" min="1" max="6" value="1">
-      </div>
-
-      <div>
-        <label>RSVP</label>
-        <select id="rsvp">
-          <option value="YES">Yes</option>
-          <option value="NO">No</option>
-          <option value="MAYBE">Maybe</option>
-        </select>
-      </div>
-    </div>
-
-    <br>
-    <button onclick="submitRSVP()">Submit RSVP</button>
-    <div id="result" style="margin-top:10px;"></div>
-  </form>
-</section>
-
-<footer>
-  © 2026 Sruthi & Gokul
-</footer>
-
-</div>
-
-<script>
-  // ===== COUNTDOWN (iPhone safe) =====
-  const target = Date.UTC(2026, 1, 26, 4, 40, 0); // Feb 25 10:40 PM CST
-  const countEl = document.getElementById("count");
-
-  function tick() {
-    const diff = target - Date.now();
-    if (diff <= 0) {
-      countEl.textContent = "Today 💍";
-      return;
+    // Minimal confetti
+    function party() {
+      const n = 120;
+      for (let i=0;i<n;i++) {
+        const d = document.createElement('div');
+        d.style.position='fixed';
+        d.style.left = Math.random()*100+'vw';
+        d.style.top = '-10px';
+        d.style.width = d.style.height = (Math.random()*6+4)+'px';
+        d.style.background = `hsl(${Math.random()*360},90%,60%)`;
+        d.style.borderRadius='2px';
+        d.style.transform=`rotate(${Math.random()*360}deg)`;
+        d.style.zIndex=9999;
+        document.body.appendChild(d);
+        const fall = () => {
+          const t = (Math.random()*4+4)*1000;
+          d.animate([{transform:'translateY(0)'}, {transform:'translateY(110vh)'}], {duration:t, easing:'cubic-bezier(.2,.7,.2,1)'}).onfinish = () => d.remove();
+        }; fall();
+      }
     }
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor(diff / 3600000) % 24;
-    const m = Math.floor(diff / 60000) % 60;
-    countEl.textContent = `${d}d ${h}h ${m}m`;
-  }
-  tick();
-  setInterval(tick, 1000);
+    window.party = party;
 
-  // ===== RSVP → GOOGLE SHEETS =====
-  const RSVP_WEB_APP_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
-
-  async function submitRSVP() {
-    const payload = {
-      name: name.value.trim(),
-      email: email.value.trim(),
-      phone: phone.value.trim(),
-      guests: guests.value,
-      rsvp: rsvp.value
-    };
-
-    if (!payload.name || !payload.email) return;
-
-    try {
-      const res = await fetch(RSVP_WEB_APP_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload)
-      });
-      const json = await res.json();
-      result.textContent =
-        payload.rsvp === "YES"
-          ? "RSVP saved ✅ Check your email for calendar invite 📅"
-          : "RSVP saved ✅ Thank you!";
-    } catch {
-      result.textContent = "Error submitting RSVP. Please try again.";
+    // Countdown (iPhone-safe)
+    const target = Date.UTC(2026, 1, 26, 4, 40, 0); // Feb=1 (0-based), 26 @ 04:40 UTC
+    const countEl = document.getElementById('count');
+    if (countEl) countEl.style.minHeight = '32px';
+    function tick() {
+      if (!countEl) return;
+      const now = Date.now();
+      const diff = Math.max(0, target - now);
+      const s = Math.floor(diff/1000)%60;
+      const m = Math.floor(diff/60000)%60;
+      const h = Math.floor(diff/3600000)%24;
+      const d = Math.floor(diff/86400000);
+      countEl.textContent = `${d}d : ${String(h).padStart(2,'0')}h : ${String(m).padStart(2,'0')}m : ${String(s).padStart(2,'0')}s`;
+      requestAnimationFrame(() => {});
     }
-  }
-</script>
+    tick();
+    setInterval(tick, 1000);
 
+    // Theme toggle
+    function toggleTheme() {
+      const cur = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', cur==='light' ? 'dark':'light');
+    }
+
+    // RSVP → Google Sheets (Apps Script Web App)
+    const RSVP_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyG5DIKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
+
+    async function submitRSVP() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const guests = document.getElementById('guests').value;
+      const phone = (document.getElementById('phone')?.value || "").trim();
+      const rsvp = (document.getElementById('rsvp')?.value || "YES").trim();
+
+      if (!name || !email) return;
+
+      try {
+        const res = await fetch(RSVP_WEB_APP_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ name, email, phone, guests, rsvp })
+        });
+        const json = await res.json();
+        document.getElementById('rsvpResult').textContent =
+          json.ok
+            ? (rsvp === "YES"
+                ? "RSVP saved ✅ Check your email for the calendar invite 📅"
+                : "RSVP saved ✅ Thank you!")
+            : json.message;
+        if (json.ok && rsvp === "YES") party();
+      } catch (e) {
+        document.getElementById('rsvpResult').textContent = "Could not submit RSVP. Please try again.";
+      }
+    }
+  </script>
 </body>
 </html>
