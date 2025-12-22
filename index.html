@@ -110,7 +110,7 @@
 
 <header>
   <h1>Sruthi ❤️ Gokul — Wedding</h1>
-  <div class="sub">A launch you don’t want to miss</div>
+  <div class="sub">We can’t wait to celebrate with you</div>
 </header>
 
 <div class="hero">
@@ -123,7 +123,10 @@
     <div class="card">
       <span class="pill">Wedding Date</span>
       <p><b>Feb 25, 2026 · 10:40 PM</b></p>
-      <div id="count" class="countdown">Loading countdown…</div>
+      <div class="countdown">
+        <span style="color:#a7b0d6;font-weight:500;">Countdown:</span>
+        <span id="count">Loading…</span>
+      </div>
     </div>
 
     <div class="card">
@@ -154,7 +157,6 @@
       <p><b>Feb 24, 2026</b></p>
       <p>Traditional haldi ceremony with close family.</p>
     </div>
-
     <div class="card">
       <h3>Wedding Ceremony</h3>
       <p><b>Feb 25, 2026 · 10:40 PM</b></p>
@@ -209,14 +211,14 @@
 </section>
 
 <footer>
-  © 2026 Sruthi & Gokul · #LoveDeployed
+  © 2026 Sruthi & Gokul
 </footer>
 
 </div>
 
 <script>
   /* Countdown – iPhone safe */
-  const target = Date.UTC(2026, 1, 26, 4, 40, 0);
+  const target = Date.UTC(2026, 1, 26, 4, 40, 0); // Feb 25, 2026 10:40 PM CST
   const countEl = document.getElementById("count");
 
   function tick() {
@@ -226,10 +228,12 @@
       return;
     }
     const d = Math.floor(diff / 86400000);
-    const h = Math.floor(diff / 3600000) % 24;
-    const m = Math.floor(diff / 60000) % 60;
-    countEl.textContent = `${d}d ${h}h ${m}m`;
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    countEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
   }
+
   tick();
   setInterval(tick, 1000);
 
