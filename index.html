@@ -97,7 +97,6 @@
       color: var(--muted);
     }
 
-    /* Countdown styles */
     .countdown {
       margin-top: 6px;
       display: flex;
@@ -114,7 +113,22 @@
     .countdown-value {
       font-size: 22px;
       font-weight: 700;
-      color: var(--text);
+    }
+
+    .calendar-note {
+      background: #1b1f40;
+      padding: 16px;
+      border-radius: 12px;
+      margin-top: 24px;
+    }
+
+    .calendar-note h3 {
+      margin: 0 0 6px;
+    }
+
+    .calendar-note p {
+      margin: 0;
+      color: var(--muted);
     }
   </style>
 </head>
@@ -182,6 +196,12 @@
   </div>
 </section>
 
+<!-- Calendar info added here -->
+<div class="calendar-note">
+  <h3>📅 Calendar</h3>
+  <p>RSVP “Yes” to receive a calendar invite by email</p>
+</div>
+
 <section id="rsvp">
   <h2>🛠️ RSVP</h2>
   <form onsubmit="return false;" class="card">
@@ -211,8 +231,7 @@
 </div>
 
 <script>
-  /* Countdown – iPhone safe */
-  const target = Date.UTC(2026, 1, 26, 2, 40, 0); // Feb 25, 8:40 PM CST
+  const target = Date.UTC(2026, 1, 26, 2, 40, 0);
   const countEl = document.getElementById("count");
 
   function tick() {
@@ -231,7 +250,6 @@
   tick();
   setInterval(tick, 1000);
 
-  /* RSVP → Google Sheets */
   const RSVP_WEB_APP_URL =
     "https://script.google.com/macros/s/AKfycbyG5DIKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
 
