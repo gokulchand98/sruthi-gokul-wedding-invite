@@ -42,7 +42,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 16px;
     }
 
@@ -106,9 +106,9 @@
     }
 
     .countdown-label {
-      font-size: 16px;              /* one size smaller */
-      font-weight: 700;             /* bold */
-      color: var(--accent2);        /* bright color */
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent2);
     }
 
     .countdown-value {
@@ -131,12 +131,12 @@
   <div class="grid">
     <div class="card">
       <span class="pill">Our Story</span>
-      <p>Two engineers, one repo. After countless commits and late-night debugging, we’re merging our branches — permanently.</p>
+      <p>Two engineers, one repo. After countless moments together, we’re ready to begin our forever.</p>
     </div>
 
     <div class="card">
       <span class="pill">Wedding Date</span>
-      <p><b>Feb 25, 2026 · 10:40 PM</b></p>
+      <p><b>Feb 25, 2026 · 8:40 PM</b></p>
       <div class="countdown">
         <span class="countdown-label">Countdown:</span>
         <span id="count" class="countdown-value">Loading…</span>
@@ -145,8 +145,8 @@
 
     <div class="card">
       <span class="pill">Location</span>
-      <p>Dallas, Texas</p>
-      <p class="sub">Exact venue shared with confirmed guests</p>
+      <p>Indian Creeks Ranch</p>
+      <p class="sub">Dallas, Texas</p>
     </div>
 
     <div class="card">
@@ -158,46 +158,26 @@
 
   <div class="btns">
     <a href="#rsvp" class="btn">RSVP Now</a>
-    <a href="#schedule" class="btn secondary">Schedule</a>
-    <a href="#details" class="btn secondary">Event Details</a>
+    <a href="#schedule" class="btn secondary">Schedule & Details</a>
   </div>
 </div>
 
 <section id="schedule">
-  <h2>📅 Schedule</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Haldi Ceremony</h3>
-      <p><b>Feb 24, 2026</b></p>
-      <p>Traditional haldi ceremony with close family.</p>
-    </div>
-    <div class="card">
-      <h3>Wedding Ceremony</h3>
-      <p><b>Feb 25, 2026 · 10:40 PM</b></p>
-      <p>Traditional South Indian wedding rituals.</p>
-    </div>
-  </div>
-</section>
+  <h2>📅 Schedule & Event Details</h2>
 
-<section id="details">
-  <h2>📍 Event Details</h2>
   <div class="grid">
     <div class="card">
-      <h3>Venue</h3>
-      <p>Dallas, TX</p>
-      <p class="sub">Full address & parking shared after RSVP</p>
+      <h3>🌼 Haldi Ceremony</h3>
+      <p><b>Date & Time:</b> Feb 24, 2026 · 12:00 PM</p>
+      <p><b>Location:</b> Indian Creeks Ranch</p>
+      <p><b>Dress Code:</b> Yellow or shades of yellow</p>
     </div>
+
     <div class="card">
-      <h3>Dress Code</h3>
-      <p>Traditional / festive attire recommended</p>
-    </div>
-    <div class="card">
-      <h3>Timing</h3>
-      <p>Please arrive 20–30 minutes early</p>
-    </div>
-    <div class="card">
-      <h3>Calendar</h3>
-      <p>RSVP “Yes” to receive a calendar invite by email</p>
+      <h3>💍 Wedding Ceremony</h3>
+      <p><b>Date & Time:</b> Feb 25, 2026 · 8:40 PM</p>
+      <p><b>Location:</b> Indian Creeks Ranch</p>
+      <p><b>Dress Code:</b> Traditional wedding attire</p>
     </div>
   </div>
 </section>
@@ -232,7 +212,7 @@
 
 <script>
   /* Countdown – iPhone safe */
-  const target = Date.UTC(2026, 1, 26, 4, 40, 0);
+  const target = Date.UTC(2026, 1, 26, 2, 40, 0); // Feb 25, 8:40 PM CST
   const countEl = document.getElementById("count");
 
   function tick() {
