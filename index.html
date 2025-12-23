@@ -105,7 +105,7 @@
     .haldi-bg {
       background-image:
         linear-gradient(rgba(255,248,231,0.88), rgba(255,248,231,0.88)),
-        url("haldi.jpeg");
+        url("assets/haldi.jpeg");
       background-size: cover;
       background-position: center;
     }
@@ -134,4 +134,105 @@
       color: var(--muted);
     }
   </style>
-</
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <h1>Gokul ❤️ Sruthi: Forever Begins</h1>
+  <div class="sub">We can’t wait to celebrate with you</div>
+</header>
+
+<div class="hero hero-split">
+  <div class="hero-image-left">
+    <img src="assets/vinayaka.jpeg" alt="Couple Illustration">
+  </div>
+
+  <div class="hero-content grid">
+    <div class="card">
+      <span class="pill">Wedding Date</span>
+      <p><b>Feb 25, 2026 · 8:40 PM</b></p>
+      <div class="countdown">
+        Countdown: <span id="count">Loading…</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="pill">Location</span>
+      <p>
+        Indian Trails Ranch<br>
+        4320 Co Rd 570<br>
+        Farmersville, TX
+      </p>
+    </div>
+  </div>
+</div>
+
+<section class="grid" style="margin-top:36px;">
+  <div class="card haldi-bg">
+    <h3>🌼 Haldi Ceremony</h3>
+    <p><b>Feb 24, 2026 · 12:00 PM</b></p>
+    <p>Indian Trails Ranch</p>
+    <p>Dress: Yellow shades</p>
+  </div>
+
+  <div class="card wedding-bg">
+    <h3>💍 Wedding Ceremony</h3>
+    <p><b>Feb 25, 2026 · 8:40 PM</b></p>
+    <p>Indian Trails Ranch</p>
+    <p>Traditional wedding attire</p>
+  </div>
+</section>
+
+<section style="margin-top:36px;">
+  <h2>🛠️ RSVP</h2>
+  <form onsubmit="return false;" class="card">
+    <input id="name" placeholder="Name" required>
+    <input id="email" placeholder="Email" required>
+    <input id="phone" placeholder="Phone">
+    <input id="guests" type="number" min="1" value="1">
+    <select id="rsvp">
+      <option>YES</option>
+      <option>NO</option>
+      <option>MAYBE</option>
+    </select>
+    <a class="btn" onclick="submitRSVP()">Submit RSVP</a>
+    <div id="result"></div>
+  </form>
+</section>
+
+<footer>© 2026 Gokul & Sruthi</footer>
+</div>
+
+<script>
+  const target = Date.UTC(2026,1,26,2,40,0);
+  const el = document.getElementById("count");
+
+  setInterval(()=>{
+    const d = target - Date.now();
+    const days = Math.floor(d/86400000);
+    const hrs = Math.floor((d%86400000)/3600000);
+    el.textContent = `${days}d ${hrs}h`;
+  },1000);
+
+  const RSVP_URL = "https://script.google.com/macros/s/AKfycbyG5DIKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
+
+  async function submitRSVP(){
+    await fetch(RSVP_URL,{
+      method:"POST",
+      headers:{ "Content-Type":"text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        name:name.value,
+        email:email.value,
+        phone:phone.value,
+        guests:guests.value,
+        rsvp:rsvp.value
+      })
+    });
+    result.textContent="RSVP saved ✅";
+  }
+</script>
+
+</body>
+</html>
