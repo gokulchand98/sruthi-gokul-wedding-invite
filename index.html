@@ -21,7 +21,7 @@
       margin: 0;
       font-family: "Georgia", "Times New Roman", serif;
       font-style: italic;
-      font-weight: 500;
+      font-weight: 500; /* medium */
       background:
         radial-gradient(900px 600px at 10% 0%, rgba(212,175,55,0.12), transparent 60%),
         radial-gradient(800px 600px at 90% 10%, rgba(201,162,77,0.10), transparent 60%),
@@ -44,6 +44,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
+    /* Hero split */
     .hero-split {
       display: flex;
       gap: 22px;
@@ -63,6 +64,8 @@
       border-radius: 20px;
       border: 1px solid rgba(212,175,55,0.25);
       box-shadow: 0 14px 40px rgba(0,0,0,0.25);
+      display: block;
+      margin: 0 auto;
     }
 
     .hero-content {
@@ -119,17 +122,32 @@
       box-shadow: none;
     }
 
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(212,175,55,0.45);
+      background: transparent;
+      color: var(--text);
+      font-style: normal;
+      font-weight: 500;
+      font-family: "Georgia", "Times New Roman", serif;
+      box-sizing: border-box;
+    }
+
     footer {
       text-align: center;
       margin: 40px 0;
       color: var(--muted);
     }
 
+    /* Countdown */
     .countdown {
       margin-top: 6px;
       display: flex;
       gap: 6px;
       align-items: baseline;
+      flex-wrap: wrap;
     }
 
     .countdown-label {
@@ -154,8 +172,10 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.05);
     }
 
-    .calendar-note h3,
-    .calendar-note p { font-style: normal; }
+    .calendar-note h3 { margin: 0 0 6px; font-style: normal; }
+    .calendar-note p { margin: 0; color: var(--muted); font-style: normal; }
+
+    #rsvpResult { margin-top: 10px; font-style: normal; }
   </style>
 </head>
 
@@ -168,9 +188,14 @@
 </header>
 
 <div class="hero hero-split">
-  <!-- LEFT IMAGE -->
+  <!-- Left image -->
   <div class="hero-image-left">
-    <img src="assets/IMG_4717.png" alt="Gokul and Sruthi" />
+    <!-- IMPORTANT: upload image to assets/IMG_4717.png -->
+    <img src="assets/IMG_4717.png" alt="Wedding Invite Artwork"
+         onerror="this.style.display='none';" />
+    <div class="sub" style="margin-top:10px; font-style: normal;">
+      (If image doesn’t show, confirm the file path is <b>assets/IMG_4717.png</b>)
+    </div>
   </div>
 
   <div class="hero-content">
@@ -189,12 +214,14 @@
         </div>
       </div>
 
-      <!-- TOP LOCATION (FULL ADDRESS) -->
+      <!-- TOP LOCATION ONLY: Full address -->
       <div class="card">
         <span class="pill">Location</span>
-        <p>4320 Co Rd 570,<br>
-        Farmersville, TX 75442,<br>
-        United States</p>
+        <p>
+          4320 Co Rd 570,<br>
+          Farmersville, TX 75442,<br>
+          United States
+        </p>
       </div>
 
       <div class="card">
@@ -235,6 +262,28 @@
   <p>RSVP “Yes” to receive a calendar invite by email</p>
 </div>
 
+<section id="rsvp">
+  <h2>🛠️ RSVP</h2>
+  <form onsubmit="return false;" class="card">
+    <div class="grid">
+      <div><input id="name" placeholder="Name" required></div>
+      <div><input id="email" type="email" placeholder="Email" required></div>
+      <div><input id="phone" placeholder="Phone"></div>
+      <div><input id="guests" type="number" min="1" max="6" value="1"></div>
+      <div>
+        <select id="rsvpSelect">
+          <option value="YES">Yes</option>
+          <option value="NO">No</option>
+          <option value="MAYBE">Maybe</option>
+        </select>
+      </div>
+    </div>
+    <br>
+    <button class="btn" onclick="submitRSVP()">Submit RSVP</button>
+    <div id="rsvpResult"></div>
+  </form>
+</section>
+
 <footer>
   © 2026 Gokul & Sruthi
 </footer>
@@ -242,7 +291,7 @@
 </div>
 
 <script>
-  // Feb 25, 2026 8:40 PM CST → Feb 26, 2026 02:40 UTC
+  // Countdown (Feb 25, 2026 8:40 PM CST = Feb 26, 2026 02:40 UTC)
   const target = Date.UTC(2026, 1, 26, 2, 40, 0);
   const countEl = document.getElementById("count");
 
@@ -258,9 +307,49 @@
     const s = Math.floor((diff % 60000) / 1000);
     countEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
   }
-
   tick();
   setInterval(tick, 1000);
+
+  // RSVP -> Google Sheets
+  const RSVP_WEB_APP_URL =
+    "https://script.google.com/macros/s/AKfycbyG5DIKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
+
+  async function submitRSVP() {
+    const resultEl = document.getElementById("rsvpResult");
+    resultEl.textContent = "Submitting…";
+
+    const payload = {
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      guests: document.getElementById("guests").value,
+      rsvp: document.getElementById("rsvpSelect").value
+    };
+
+    if (!payload.name || !payload.email) {
+      resultEl.textContent = "Please enter your name and email.";
+      return;
+    }
+
+    try {
+      const res = await fetch(RSVP_WEB_APP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+
+      // Even if Apps Script returns 200 with text, fetch resolves
+      if (!res.ok) throw new Error("Network error");
+
+      resultEl.textContent =
+        payload.rsvp === "YES"
+          ? "RSVP saved ✅ You’ll receive a calendar invite by email 📅"
+          : "RSVP saved ✅ Thank you!";
+    } catch (e) {
+      resultEl.textContent =
+        "RSVP failed ❌ Please try again. (If this keeps happening, your Google Apps Script deployment permissions may need updating.)";
+    }
+  }
 </script>
 
 </body>
