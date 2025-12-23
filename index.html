@@ -21,7 +21,7 @@
       margin: 0;
       font-family: "Georgia", "Times New Roman", serif;
       font-style: italic;
-      font-weight: 500; /* medium */
+      font-weight: 500;
       background:
         radial-gradient(900px 600px at 10% 0%, rgba(212,175,55,0.12), transparent 60%),
         radial-gradient(800px 600px at 90% 10%, rgba(201,162,77,0.10), transparent 60%),
@@ -35,6 +35,7 @@
     h1 { font-size: clamp(28px, 5vw, 48px); margin: 12px 0 6px; }
     .sub { color: var(--muted); }
 
+    /* HERO */
     .hero {
       background: var(--card);
       border-radius: 18px;
@@ -44,7 +45,6 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
-    /* Hero split */
     .hero-split {
       display: flex;
       gap: 22px;
@@ -64,8 +64,6 @@
       border-radius: 20px;
       border: 1px solid rgba(212,175,55,0.25);
       box-shadow: 0 14px 40px rgba(0,0,0,0.25);
-      display: block;
-      margin: 0 auto;
     }
 
     .hero-content {
@@ -73,6 +71,7 @@
       min-width: 320px;
     }
 
+    /* GRID / CARDS */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -122,26 +121,7 @@
       box-shadow: none;
     }
 
-    input, select {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(212,175,55,0.45);
-      background: transparent;
-      color: var(--text);
-      font-style: normal;
-      font-weight: 500;
-      font-family: "Georgia", "Times New Roman", serif;
-      box-sizing: border-box;
-    }
-
-    footer {
-      text-align: center;
-      margin: 40px 0;
-      color: var(--muted);
-    }
-
-    /* Countdown */
+    /* COUNTDOWN */
     .countdown {
       margin-top: 6px;
       display: flex;
@@ -163,6 +143,37 @@
       font-style: normal;
     }
 
+    /* WEDDING BACKGROUND */
+    .wedding-bg {
+      background-image:
+        linear-gradient(
+          rgba(255,248,231,0.88),
+          rgba(255,248,231,0.88)
+        ),
+        url("assets/vinayaka.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 26px;
+      border-radius: 16px;
+    }
+
+    /* RSVP */
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(212,175,55,0.45);
+      background: transparent;
+      color: var(--text);
+      font-style: normal;
+      font-weight: 500;
+      font-family: "Georgia", "Times New Roman", serif;
+      box-sizing: border-box;
+    }
+
+    #rsvpResult { margin-top: 10px; font-style: normal; }
+
     .calendar-note {
       background: var(--card);
       padding: 18px;
@@ -172,10 +183,11 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.05);
     }
 
-    .calendar-note h3 { margin: 0 0 6px; font-style: normal; }
-    .calendar-note p { margin: 0; color: var(--muted); font-style: normal; }
-
-    #rsvpResult { margin-top: 10px; font-style: normal; }
+    footer {
+      text-align: center;
+      margin: 40px 0;
+      color: var(--muted);
+    }
   </style>
 </head>
 
@@ -188,13 +200,8 @@
 </header>
 
 <div class="hero hero-split">
-  <!-- Left image -->
   <div class="hero-image-left">
-    <!-- IMPORTANT: upload image to assets/IMG_4717.png -->
-    <img src="IMG_4717.png" alt="Wedding Invite Artwork"
-         onerror="this.style.display='none';" />
-    <div class="sub" style="margin-top:10px; font-style: normal;">
-    </div>
+    <img src="assets/IMG_4717.png" alt="Wedding Artwork">
   </div>
 
   <div class="hero-content">
@@ -213,21 +220,18 @@
         </div>
       </div>
 
-      <!-- TOP LOCATION ONLY: Full address -->
       <div class="card">
         <span class="pill">Location</span>
         <p>
-          Indian Trails Ranch
+          Indian Trails Ranch<br>
           4320 Co Rd 570,<br>
-          Farmersville, TX 75442,<br>
-          United States
+          Farmersville, TX 75442
         </p>
       </div>
 
       <div class="card">
         <span class="pill">Contributors</span>
         <p>Family & Friends ❤️</p>
-        <p class="sub">Thank you for being part of our journey</p>
       </div>
     </div>
 
@@ -240,6 +244,7 @@
 
 <section id="schedule">
   <h2>📅 Schedule & Event Details</h2>
+
   <div class="grid">
     <div class="card">
       <h3>🌼 Haldi Ceremony</h3>
@@ -248,8 +253,9 @@
       <p><b>Dress Code:</b> Yellow or shades of yellow</p>
     </div>
 
-    <div class="card">
-      <h3>💍 Wedding Ceremony</h3>
+    <!-- Wedding with background -->
+    <div class="card wedding-bg">
+      <h3> Wedding Ceremony</h3>
       <p><b>Date & Time:</b> Feb 25, 2026 · 8:40 PM</p>
       <p><b>Location:</b> Indian Trails Ranch</p>
       <p><b>Dress Code:</b> Traditional wedding attire</p>
@@ -291,7 +297,6 @@
 </div>
 
 <script>
-  // Countdown (Feb 25, 2026 8:40 PM CST = Feb 26, 2026 02:40 UTC)
   const target = Date.UTC(2026, 1, 26, 2, 40, 0);
   const countEl = document.getElementById("count");
 
@@ -310,7 +315,6 @@
   tick();
   setInterval(tick, 1000);
 
-  // RSVP -> Google Sheets
   const RSVP_WEB_APP_URL =
     "https://script.google.com/macros/s/AKfycbyG5DIKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
 
@@ -319,11 +323,11 @@
     resultEl.textContent = "Submitting…";
 
     const payload = {
-      name: document.getElementById("name").value.trim(),
-      email: document.getElementById("email").value.trim(),
-      phone: document.getElementById("phone").value.trim(),
-      guests: document.getElementById("guests").value,
-      rsvp: document.getElementById("rsvpSelect").value
+      name: name.value.trim(),
+      email: email.value.trim(),
+      phone: phone.value.trim(),
+      guests: guests.value,
+      rsvp: rsvpSelect.value
     };
 
     if (!payload.name || !payload.email) {
@@ -332,22 +336,18 @@
     }
 
     try {
-      const res = await fetch(RSVP_WEB_APP_URL, {
+      await fetch(RSVP_WEB_APP_URL, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload)
       });
 
-      // Even if Apps Script returns 200 with text, fetch resolves
-      if (!res.ok) throw new Error("Network error");
-
       resultEl.textContent =
         payload.rsvp === "YES"
           ? "RSVP saved ✅ You’ll receive a calendar invite by email 📅"
           : "RSVP saved ✅ Thank you!";
-    } catch (e) {
-      resultEl.textContent =
-        "RSVP failed ❌ Please try again. (If this keeps happening, your Google Apps Script deployment permissions may need updating.)";
+    } catch {
+      resultEl.textContent = "RSVP failed ❌ Please try again.";
     }
   }
 </script>
