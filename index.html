@@ -105,7 +105,6 @@
       text-decoration:none;
       box-shadow:0 6px 20px rgba(212,175,55,0.35);
       font-style:normal;
-      display:inline-block;
     }
 
     .btn.secondary{
@@ -123,7 +122,6 @@
       background:transparent;
       color:var(--text);
       font-style:normal;
-      font-weight:500;
       font-family:"Georgia","Times New Roman",serif;
       box-sizing:border-box;
     }
@@ -137,12 +135,14 @@
       align-items:baseline;
       flex-wrap:wrap;
     }
+
     .countdown-label{
       font-size:15px;
       font-weight:800;
       color:var(--accent);
       font-style:normal;
     }
+
     .countdown-value{
       font-size:22px;
       font-weight:700;
@@ -159,27 +159,21 @@
     }
 
     .haldi-bg{
-      background-image:
+      background:
         linear-gradient(rgba(255,248,231,0.88),rgba(255,248,231,0.88)),
-        url("haldi.jpeg");
-      background-size:cover;
-      background-position:center;
+        url("haldi.jpeg") center/cover no-repeat;
     }
 
     .wedding-bg{
-      background-image:
+      background:
         linear-gradient(rgba(255,248,231,0.88),rgba(255,248,231,0.88)),
-        url("vinayaka.jpeg");
-      background-size:cover;
-      background-position:center;
+        url("vinayaka.jpeg") center/cover no-repeat;
     }
 
     .story-bg{
-      background-image:
+      background:
         linear-gradient(rgba(255,248,231,0.92),rgba(255,248,231,0.92)),
-        url("couple.jpeg");
-      background-size:cover;
-      background-position:center;
+        url("couple.jpeg") center/cover no-repeat;
     }
   </style>
 </head>
@@ -218,7 +212,7 @@
         <p>
           Indian Trails Ranch<br>
           4320 Co Rd 570,<br>
-          Farmersville, Dallas, TX 75442
+          Farmersville, TX 75442
         </p>
       </div>
 
@@ -283,6 +277,7 @@
 <script>
   const target = Date.UTC(2026,1,26,2,40,0);
   const countEl = document.getElementById("count");
+
   function tick(){
     const d = target - Date.now();
     if(d<=0){countEl.textContent="Today 💍";return;}
@@ -306,13 +301,21 @@
     };
     if(!p.name||!p.email){r.textContent="Enter name & email";return;}
     try{
-      await fetch(RSVP_WEB_APP_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p)});
-      r.textContent=p.rsvp==="YES"?"RSVP saved ✅ Calendar invite sent 📅":"RSVP saved ✅";
-    }catch{r.textContent="RSVP failed ❌";}
+      await fetch(RSVP_WEB_APP_URL,{
+        method:"POST",
+        headers:{"Content-Type":"text/plain;charset=utf-8"},
+        body:JSON.stringify(p)
+      });
+      r.textContent=p.rsvp==="YES"
+        ?"RSVP saved ✅ Calendar invite sent 📅"
+        :"RSVP saved ✅";
+    }catch{
+      r.textContent="RSVP failed ❌";
+    }
   }
 </script>
 
-<!-- ✅ Mobile scroll fix (ADDED AS REQUESTED) -->
+<!-- Mobile: always open from top -->
 <script>
   window.onload=function(){window.scrollTo(0,0);}
   window.onpageshow=function(e){if(e.persisted)window.scrollTo(0,0);}
