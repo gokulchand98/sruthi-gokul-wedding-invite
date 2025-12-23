@@ -19,7 +19,9 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-style: italic;
+      font-weight: 500; /* medium */
       background:
         radial-gradient(900px 600px at 10% 0%, rgba(212,175,55,0.12), transparent 60%),
         radial-gradient(800px 600px at 90% 10%, rgba(201,162,77,0.10), transparent 60%),
@@ -40,6 +42,33 @@
       margin-top: 18px;
       border: 1px solid rgba(212,175,55,0.25);
       box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    /* Split hero with image on the left */
+    .hero-split {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-image-left {
+      flex: 1;
+      min-width: 260px;
+      text-align: center;
+    }
+
+    .hero-image-left img {
+      max-width: 100%;
+      max-height: 420px;
+      border-radius: 20px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.25);
+      border: 1px solid rgba(212,175,55,0.25);
+    }
+
+    .hero-content {
+      flex: 2;
+      min-width: 320px;
     }
 
     .grid {
@@ -66,6 +95,7 @@
       font-size:12px;
       color:var(--muted);
       background: rgba(212,175,55,0.1);
+      font-style: normal; /* pills look cleaner non-italic */
     }
 
     .btns { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
@@ -75,11 +105,12 @@
       border: none;
       padding: 12px 18px;
       border-radius: 12px;
-      font-weight: bold;
+      font-weight: 700;
       cursor: pointer;
       color: #2a1f10;
       text-decoration: none;
       box-shadow: 0 6px 20px rgba(212,175,55,0.35);
+      font-style: normal; /* buttons look better non-italic */
     }
 
     .btn.secondary {
@@ -96,6 +127,9 @@
       border: 1px solid rgba(212,175,55,0.45);
       background: transparent;
       color: var(--text);
+      font-style: normal; /* form inputs readable */
+      font-weight: 500;
+      font-family: "Georgia", "Times New Roman", serif;
     }
 
     footer {
@@ -116,11 +150,13 @@
       font-size: 15px;
       font-weight: 800;
       color: var(--accent);
+      font-style: normal; /* label is crisp */
     }
 
     .countdown-value {
       font-size: 22px;
       font-weight: 700;
+      font-style: normal; /* numbers crisp */
     }
 
     .calendar-note {
@@ -132,8 +168,8 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.05);
     }
 
-    .calendar-note h3 { margin: 0 0 6px; }
-    .calendar-note p { margin: 0; color: var(--muted); }
+    .calendar-note h3 { margin: 0 0 6px; font-style: normal; }
+    .calendar-note p { margin: 0; color: var(--muted); font-style: normal; }
   </style>
 </head>
 
@@ -145,38 +181,45 @@
   <div class="sub">We can’t wait to celebrate with you</div>
 </header>
 
-<div class="hero">
-  <div class="grid">
-    <div class="card">
-      <span class="pill">Our Story</span>
-      <p>Two hearts, one journey. After countless moments together, we’re ready to begin our forever.</p>
-    </div>
+<div class="hero hero-split">
+  <!-- Left image: put your picture in assets/couple.png -->
+  <div class="hero-image-left">
+    <img src="assets/couple.png" alt="Gokul and Sruthi" />
+  </div>
 
-    <div class="card">
-      <span class="pill">Wedding Date</span>
-      <p><b>Feb 25, 2026 · 8:40 PM</b></p>
-      <div class="countdown">
-        <span class="countdown-label">Countdown:</span>
-        <span id="count" class="countdown-value">Loading…</span>
+  <div class="hero-content">
+    <div class="grid">
+      <div class="card">
+        <span class="pill">Our Story</span>
+        <p>Two hearts, one journey. After countless moments together, we’re ready to begin our forever.</p>
+      </div>
+
+      <div class="card">
+        <span class="pill">Wedding Date</span>
+        <p><b>Feb 25, 2026 · 8:40 PM</b></p>
+        <div class="countdown">
+          <span class="countdown-label">Countdown:</span>
+          <span id="count" class="countdown-value">Loading…</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="pill">Location</span>
+        <p>Indian Trails Ranch</p>
+        <p class="sub">Dallas, Texas</p>
+      </div>
+
+      <div class="card">
+        <span class="pill">Contributors</span>
+        <p>Family & Friends ❤️</p>
+        <p class="sub">Thank you for being part of our journey</p>
       </div>
     </div>
 
-    <div class="card">
-      <span class="pill">Location</span>
-      <p>Indian Creeks Ranch</p>
-      <p class="sub">Dallas, Texas</p>
+    <div class="btns">
+      <a href="#rsvp" class="btn">RSVP Now</a>
+      <a href="#schedule" class="btn secondary">Schedule & Details</a>
     </div>
-
-    <div class="card">
-      <span class="pill">Contributors</span>
-      <p>Family & Friends ❤️</p>
-      <p class="sub">Thank you for being part of our journey</p>
-    </div>
-  </div>
-
-  <div class="btns">
-    <a href="#rsvp" class="btn">RSVP Now</a>
-    <a href="#schedule" class="btn secondary">Schedule & Details</a>
   </div>
 </div>
 
@@ -186,14 +229,14 @@
     <div class="card">
       <h3>🌼 Haldi Ceremony</h3>
       <p><b>Date & Time:</b> Feb 24, 2026 · 12:00 PM</p>
-      <p><b>Location:</b> Indian Creeks Ranch</p>
+      <p><b>Location:</b> Indian Trails Ranch</p>
       <p><b>Dress Code:</b> Yellow or shades of yellow</p>
     </div>
 
     <div class="card">
       <h3>💍 Wedding Ceremony</h3>
       <p><b>Date & Time:</b> Feb 25, 2026 · 8:40 PM</p>
-      <p><b>Location:</b> Indian Creeks Ranch</p>
+      <p><b>Location:</b> Indian Trails Ranch</p>
       <p><b>Dress Code:</b> Traditional wedding attire</p>
     </div>
   </div>
@@ -222,7 +265,7 @@
     </div>
     <br>
     <button class="btn" onclick="submitRSVP()">Submit RSVP</button>
-    <div id="rsvpResult" style="margin-top:10px;"></div>
+    <div id="rsvpResult" style="margin-top:10px; font-style: normal;"></div>
   </form>
 </section>
 
