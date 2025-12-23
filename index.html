@@ -15,8 +15,6 @@
       --accent2: #c9a24d;
     }
 
-    html, body { height: 100%; }
-
     body {
       margin: 0;
       font-family: "Georgia", "Times New Roman", serif;
@@ -27,20 +25,17 @@
         radial-gradient(800px 600px at 90% 10%, rgba(201,162,77,0.10), transparent 60%),
         var(--bg);
       color: var(--text);
-      line-height: 1.6;
     }
 
     .container { max-width: 980px; margin: auto; padding: 24px; }
-    header { text-align: center; padding: 32px 0 16px; }
-    h1 { font-size: clamp(28px, 5vw, 48px); margin: 12px 0 6px; }
+    header { text-align: center; padding: 32px 0; }
+    h1 { font-size: clamp(28px, 5vw, 48px); margin: 0; }
     .sub { color: var(--muted); }
 
-    /* HERO */
     .hero {
       background: var(--card);
       border-radius: 18px;
       padding: 22px;
-      margin-top: 18px;
       border: 1px solid rgba(212,175,55,0.25);
       box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
@@ -48,13 +43,12 @@
     .hero-split {
       display: flex;
       gap: 22px;
-      align-items: center;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     .hero-image-left {
       flex: 1;
-      min-width: 260px;
       text-align: center;
     }
 
@@ -62,16 +56,11 @@
       max-width: 100%;
       max-height: 420px;
       border-radius: 20px;
-      border: 1px solid rgba(212,175,55,0.25);
       box-shadow: 0 14px 40px rgba(0,0,0,0.25);
     }
 
-    .hero-content {
-      flex: 2;
-      min-width: 320px;
-    }
+    .hero-content { flex: 2; }
 
-    /* GRID / CARDS */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -86,101 +75,57 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.05);
     }
 
-    section { margin-top: 36px; }
-
     .pill {
       display:inline-block;
       padding:4px 12px;
       border-radius:999px;
       border:1px solid rgba(212,175,55,0.45);
       font-size:12px;
-      color:var(--muted);
       background: rgba(212,175,55,0.1);
       font-style: normal;
     }
 
-    .btns { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
-
     .btn {
       background: linear-gradient(90deg, var(--accent), var(--accent2));
-      border: none;
       padding: 12px 18px;
       border-radius: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      color: #2a1f10;
       text-decoration: none;
-      box-shadow: 0 6px 20px rgba(212,175,55,0.35);
-      font-style: normal;
-    }
-
-    .btn.secondary {
-      background: transparent;
-      color: var(--text);
-      border:1px solid rgba(212,175,55,0.45);
-      box-shadow: none;
-    }
-
-    /* COUNTDOWN */
-    .countdown {
-      margin-top: 6px;
-      display: flex;
-      gap: 6px;
-      align-items: baseline;
-      flex-wrap: wrap;
-    }
-
-    .countdown-label {
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--accent);
-      font-style: normal;
-    }
-
-    .countdown-value {
-      font-size: 22px;
+      color: #2a1f10;
       font-weight: 700;
+      display: inline-block;
+      margin-top: 12px;
       font-style: normal;
     }
 
-    /* WEDDING BACKGROUND */
-    .wedding-bg {
+    /* Countdown */
+    .countdown { margin-top: 6px; font-style: normal; }
+    .countdown span { font-weight: 700; color: var(--accent); }
+
+    /* Haldi background */
+    .haldi-bg {
       background-image:
-        linear-gradient(
-          rgba(255,248,231,0.88),
-          rgba(255,248,231,0.88)
-        ),
-        url("vinayaka.jpeg");
+        linear-gradient(rgba(255,248,231,0.88), rgba(255,248,231,0.88)),
+        url("haldi.jpeg");
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      padding: 26px;
-      border-radius: 16px;
     }
 
-    /* RSVP */
+    /* Wedding background */
+    .wedding-bg {
+      background-image:
+        linear-gradient(rgba(255,248,231,0.88), rgba(255,248,231,0.88)),
+        url("assets/wedding-bg.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
     input, select {
       width: 100%;
       padding: 12px;
+      margin-top: 8px;
       border-radius: 10px;
       border: 1px solid rgba(212,175,55,0.45);
-      background: transparent;
-      color: var(--text);
       font-style: normal;
-      font-weight: 500;
-      font-family: "Georgia", "Times New Roman", serif;
-      box-sizing: border-box;
-    }
-
-    #rsvpResult { margin-top: 10px; font-style: normal; }
-
-    .calendar-note {
-      background: var(--card);
-      padding: 18px;
-      border-radius: 16px;
-      margin-top: 24px;
-      border: 1px solid rgba(212,175,55,0.25);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
     }
 
     footer {
@@ -189,168 +134,4 @@
       color: var(--muted);
     }
   </style>
-</head>
-
-<body>
-<div class="container">
-
-<header>
-  <h1>Gokul ❤️ Sruthi: Forever Begins</h1>
-  <div class="sub">We can’t wait to celebrate with you</div>
-</header>
-
-<div class="hero hero-split">
-  <div class="hero-image-left">
-    <img src="IMG_4717.png" alt="Wedding Artwork">
-  </div>
-
-  <div class="hero-content">
-    <div class="grid">
-      <div class="card">
-        <span class="pill">Our Story</span>
-        <p>Two hearts, one journey. After countless moments together, we’re ready to begin our forever.</p>
-      </div>
-
-      <div class="card">
-        <span class="pill">Wedding Date</span>
-        <p><b>Feb 25, 2026 · 8:40 PM</b></p>
-        <div class="countdown">
-          <span class="countdown-label">Countdown:</span>
-          <span id="count" class="countdown-value">Loading…</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <span class="pill">Location</span>
-        <p>
-          Indian Trails Ranch<br>
-          4320 Co Rd 570,<br>
-          Farmersville, TX 75442
-        </p>
-      </div>
-
-      <div class="card">
-        <span class="pill">Contributors</span>
-        <p>Family & Friends ❤️</p>
-      </div>
-    </div>
-
-    <div class="btns">
-      <a href="#rsvp" class="btn">RSVP Now</a>
-      <a href="#schedule" class="btn secondary">Schedule & Details</a>
-    </div>
-  </div>
-</div>
-
-<section id="schedule">
-  <h2>📅 Schedule & Event Details</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>🌼 Haldi Ceremony</h3>
-      <p><b>Date & Time:</b> Feb 24, 2026 · 12:00 PM</p>
-      <p><b>Location:</b> Indian Trails Ranch</p>
-      <p><b>Dress Code:</b> Yellow or shades of yellow</p>
-    </div>
-
-    <!-- Wedding with background -->
-    <div class="card wedding-bg">
-      <h3> Wedding Ceremony</h3>
-      <p><b>Date & Time:</b> Feb 25, 2026 · 8:40 PM</p>
-      <p><b>Location:</b> Indian Trails Ranch</p>
-      <p><b>Dress Code:</b> Traditional wedding attire</p>
-    </div>
-  </div>
-</section>
-
-<div class="calendar-note">
-  <h3>📅 Calendar</h3>
-  <p>RSVP “Yes” to receive a calendar invite by email</p>
-</div>
-
-<section id="rsvp">
-  <h2>🛠️ RSVP</h2>
-  <form onsubmit="return false;" class="card">
-    <div class="grid">
-      <div><input id="name" placeholder="Name" required></div>
-      <div><input id="email" type="email" placeholder="Email" required></div>
-      <div><input id="phone" placeholder="Phone"></div>
-      <div><input id="guests" type="number" min="1" max="6" value="1"></div>
-      <div>
-        <select id="rsvpSelect">
-          <option value="YES">Yes</option>
-          <option value="NO">No</option>
-          <option value="MAYBE">Maybe</option>
-        </select>
-      </div>
-    </div>
-    <br>
-    <button class="btn" onclick="submitRSVP()">Submit RSVP</button>
-    <div id="rsvpResult"></div>
-  </form>
-</section>
-
-<footer>
-  © 2026 Gokul & Sruthi
-</footer>
-
-</div>
-
-<script>
-  const target = Date.UTC(2026, 1, 26, 2, 40, 0);
-  const countEl = document.getElementById("count");
-
-  function tick() {
-    const diff = target - Date.now();
-    if (diff <= 0) {
-      countEl.textContent = "Today 💍";
-      return;
-    }
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    countEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
-  }
-  tick();
-  setInterval(tick, 1000);
-
-  const RSVP_WEB_APP_URL =
-    "https://script.google.com/macros/s/AKfycbyG5DIKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
-
-  async function submitRSVP() {
-    const resultEl = document.getElementById("rsvpResult");
-    resultEl.textContent = "Submitting…";
-
-    const payload = {
-      name: name.value.trim(),
-      email: email.value.trim(),
-      phone: phone.value.trim(),
-      guests: guests.value,
-      rsvp: rsvpSelect.value
-    };
-
-    if (!payload.name || !payload.email) {
-      resultEl.textContent = "Please enter your name and email.";
-      return;
-    }
-
-    try {
-      await fetch(RSVP_WEB_APP_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload)
-      });
-
-      resultEl.textContent =
-        payload.rsvp === "YES"
-          ? "RSVP saved ✅ You’ll receive a calendar invite by email 📅"
-          : "RSVP saved ✅ Thank you!";
-    } catch {
-      resultEl.textContent = "RSVP failed ❌ Please try again.";
-    }
-  }
-</script>
-
-</body>
-</html>
+</
