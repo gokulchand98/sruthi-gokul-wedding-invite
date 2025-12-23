@@ -7,12 +7,12 @@
 
   <style>
     :root {
-      --bg: #fff8e7;          /* ivory */
-      --card: #ffffff;       /* white */
-      --text: #3b2f1c;       /* deep brown */
-      --muted: #7a6a4f;      /* soft brown */
-      --accent: #d4af37;     /* gold */
-      --accent2: #c9a24d;    /* soft gold */
+      --bg: #fff8e7;
+      --card: #ffffff;
+      --text: #3b2f1c;
+      --muted: #7a6a4f;
+      --accent: #d4af37;
+      --accent2: #c9a24d;
     }
 
     html, body { height: 100%; }
@@ -21,7 +21,7 @@
       margin: 0;
       font-family: "Georgia", "Times New Roman", serif;
       font-style: italic;
-      font-weight: 500; /* medium */
+      font-weight: 500;
       background:
         radial-gradient(900px 600px at 10% 0%, rgba(212,175,55,0.12), transparent 60%),
         radial-gradient(800px 600px at 90% 10%, rgba(201,162,77,0.10), transparent 60%),
@@ -44,7 +44,6 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
-    /* Split hero with image on the left */
     .hero-split {
       display: flex;
       gap: 22px;
@@ -62,8 +61,8 @@
       max-width: 100%;
       max-height: 420px;
       border-radius: 20px;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.25);
       border: 1px solid rgba(212,175,55,0.25);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.25);
     }
 
     .hero-content {
@@ -95,7 +94,7 @@
       font-size:12px;
       color:var(--muted);
       background: rgba(212,175,55,0.1);
-      font-style: normal; /* pills look cleaner non-italic */
+      font-style: normal;
     }
 
     .btns { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
@@ -110,7 +109,7 @@
       color: #2a1f10;
       text-decoration: none;
       box-shadow: 0 6px 20px rgba(212,175,55,0.35);
-      font-style: normal; /* buttons look better non-italic */
+      font-style: normal;
     }
 
     .btn.secondary {
@@ -120,25 +119,12 @@
       box-shadow: none;
     }
 
-    input, select {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(212,175,55,0.45);
-      background: transparent;
-      color: var(--text);
-      font-style: normal; /* form inputs readable */
-      font-weight: 500;
-      font-family: "Georgia", "Times New Roman", serif;
-    }
-
     footer {
       text-align: center;
       margin: 40px 0;
       color: var(--muted);
     }
 
-    /* Countdown */
     .countdown {
       margin-top: 6px;
       display: flex;
@@ -150,13 +136,13 @@
       font-size: 15px;
       font-weight: 800;
       color: var(--accent);
-      font-style: normal; /* label is crisp */
+      font-style: normal;
     }
 
     .countdown-value {
       font-size: 22px;
       font-weight: 700;
-      font-style: normal; /* numbers crisp */
+      font-style: normal;
     }
 
     .calendar-note {
@@ -168,8 +154,8 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.05);
     }
 
-    .calendar-note h3 { margin: 0 0 6px; font-style: normal; }
-    .calendar-note p { margin: 0; color: var(--muted); font-style: normal; }
+    .calendar-note h3,
+    .calendar-note p { font-style: normal; }
   </style>
 </head>
 
@@ -182,9 +168,9 @@
 </header>
 
 <div class="hero hero-split">
-  <!-- Left image: put your picture in assets/couple.png -->
+  <!-- LEFT IMAGE -->
   <div class="hero-image-left">
-    <img src="assets/couple.png" alt="Gokul and Sruthi" />
+    <img src="assets/IMG_4717.png" alt="Gokul and Sruthi" />
   </div>
 
   <div class="hero-content">
@@ -196,136 +182,4 @@
 
       <div class="card">
         <span class="pill">Wedding Date</span>
-        <p><b>Feb 25, 2026 · 8:40 PM</b></p>
-        <div class="countdown">
-          <span class="countdown-label">Countdown:</span>
-          <span id="count" class="countdown-value">Loading…</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <span class="pill">Location</span>
-        <p>Indian Trails Ranch</p>
-        <p class="sub">Dallas, Texas</p>
-      </div>
-
-      <div class="card">
-        <span class="pill">Contributors</span>
-        <p>Family & Friends ❤️</p>
-        <p class="sub">Thank you for being part of our journey</p>
-      </div>
-    </div>
-
-    <div class="btns">
-      <a href="#rsvp" class="btn">RSVP Now</a>
-      <a href="#schedule" class="btn secondary">Schedule & Details</a>
-    </div>
-  </div>
-</div>
-
-<section id="schedule">
-  <h2>📅 Schedule & Event Details</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>🌼 Haldi Ceremony</h3>
-      <p><b>Date & Time:</b> Feb 24, 2026 · 12:00 PM</p>
-      <p><b>Location:</b> Indian Trails Ranch</p>
-      <p><b>Dress Code:</b> Yellow or shades of yellow</p>
-    </div>
-
-    <div class="card">
-      <h3>💍 Wedding Ceremony</h3>
-      <p><b>Date & Time:</b> Feb 25, 2026 · 8:40 PM</p>
-      <p><b>Location:</b> Indian Trails Ranch</p>
-      <p><b>Dress Code:</b> Traditional wedding attire</p>
-    </div>
-  </div>
-</section>
-
-<div class="calendar-note">
-  <h3>📅 Calendar</h3>
-  <p>RSVP “Yes” to receive a calendar invite by email</p>
-</div>
-
-<section id="rsvp">
-  <h2>🛠️ RSVP</h2>
-  <form onsubmit="return false;" class="card">
-    <div class="grid">
-      <div><input id="name" placeholder="Name" required></div>
-      <div><input id="email" type="email" placeholder="Email" required></div>
-      <div><input id="phone" placeholder="Phone"></div>
-      <div><input id="guests" type="number" min="1" max="6" value="1"></div>
-      <div>
-        <select id="rsvp">
-          <option value="YES">Yes</option>
-          <option value="NO">No</option>
-          <option value="MAYBE">Maybe</option>
-        </select>
-      </div>
-    </div>
-    <br>
-    <button class="btn" onclick="submitRSVP()">Submit RSVP</button>
-    <div id="rsvpResult" style="margin-top:10px; font-style: normal;"></div>
-  </form>
-</section>
-
-<footer>
-  © 2026 Gokul & Sruthi
-</footer>
-
-</div>
-
-<script>
-  // Feb 25, 2026 8:40 PM CST = Feb 26, 2026 02:40 UTC
-  const target = Date.UTC(2026, 1, 26, 2, 40, 0);
-  const countEl = document.getElementById("count");
-
-  function tick() {
-    const diff = target - Date.now();
-    if (diff <= 0) {
-      countEl.textContent = "Today 💍";
-      return;
-    }
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    countEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
-  }
-
-  tick();
-  setInterval(tick, 1000);
-
-  const RSVP_WEB_APP_URL =
-    "https://script.google.com/macros/s/AKfycbyG5DIKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
-
-  async function submitRSVP() {
-    const payload = {
-      name: name.value.trim(),
-      email: email.value.trim(),
-      phone: phone.value.trim(),
-      guests: guests.value,
-      rsvp: rsvp.value
-    };
-
-    if (!payload.name || !payload.email) return;
-
-    try {
-      await fetch(RSVP_WEB_APP_URL, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload)
-      });
-
-      rsvpResult.textContent =
-        payload.rsvp === "YES"
-          ? "RSVP saved ✅ Check your email for calendar invite 📅"
-          : "RSVP saved ✅ Thank you!";
-    } catch {
-      rsvpResult.textContent = "Error submitting RSVP. Please try again.";
-    }
-  }
-</script>
-
-</body>
-</html>
+        <p><b>Feb 25, 20
