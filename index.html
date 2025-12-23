@@ -7,10 +7,10 @@
 
   <style>
     :root {
-      --bg: #fff8e7;          /* light ivory */
-      --card: #ffffff;       /* white cards */
+      --bg: #fff8e7;          /* ivory */
+      --card: #ffffff;       /* white */
       --text: #3b2f1c;       /* deep brown */
-      --muted: #7a6a4f;      /* soft muted brown */
+      --muted: #7a6a4f;      /* soft brown */
       --accent: #d4af37;     /* gold */
       --accent2: #c9a24d;    /* soft gold */
     }
@@ -35,11 +35,11 @@
 
     .hero {
       background: var(--card);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 22px;
       margin-top: 18px;
-      border: 1px solid rgba(212,175,55,0.22);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+      border: 1px solid rgba(212,175,55,0.25);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
     .grid {
@@ -52,20 +52,20 @@
       background: var(--card);
       padding: 18px;
       border-radius: 16px;
-      border: 1px solid rgba(212,175,55,0.22);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+      border: 1px solid rgba(212,175,55,0.25);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
     }
 
     section { margin-top: 36px; }
 
     .pill {
       display:inline-block;
-      padding:4px 10px;
+      padding:4px 12px;
       border-radius:999px;
-      border:1px solid rgba(212,175,55,0.35);
+      border:1px solid rgba(212,175,55,0.45);
       font-size:12px;
       color:var(--muted);
-      background: rgba(212,175,55,0.08);
+      background: rgba(212,175,55,0.1);
     }
 
     .btns { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
@@ -73,25 +73,27 @@
     .btn {
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       border: none;
-      padding: 12px 16px;
-      border-radius: 10px;
+      padding: 12px 18px;
+      border-radius: 12px;
       font-weight: bold;
       cursor: pointer;
       color: #2a1f10;
       text-decoration: none;
+      box-shadow: 0 6px 20px rgba(212,175,55,0.35);
     }
 
     .btn.secondary {
       background: transparent;
       color: var(--text);
-      border:1px solid rgba(212,175,55,0.35);
+      border:1px solid rgba(212,175,55,0.45);
+      box-shadow: none;
     }
 
     input, select {
       width: 100%;
       padding: 12px;
-      border-radius: 8px;
-      border: 1px solid rgba(212,175,55,0.35);
+      border-radius: 10px;
+      border: 1px solid rgba(212,175,55,0.45);
       background: transparent;
       color: var(--text);
     }
@@ -102,6 +104,7 @@
       color: var(--muted);
     }
 
+    /* Countdown */
     .countdown {
       margin-top: 6px;
       display: flex;
@@ -110,9 +113,9 @@
     }
 
     .countdown-label {
-      font-size: 15px;        /* slightly smaller */
-      font-weight: 800;       /* bold */
-      color: var(--accent);   /* bright gold */
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--accent);
     }
 
     .countdown-value {
@@ -122,11 +125,11 @@
 
     .calendar-note {
       background: var(--card);
-      padding: 16px;
+      padding: 18px;
       border-radius: 16px;
       margin-top: 24px;
-      border: 1px solid rgba(212,175,55,0.22);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+      border: 1px solid rgba(212,175,55,0.25);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
     }
 
     .calendar-note h3 { margin: 0 0 6px; }
@@ -179,7 +182,6 @@
 
 <section id="schedule">
   <h2>📅 Schedule & Event Details</h2>
-
   <div class="grid">
     <div class="card">
       <h3>🌼 Haldi Ceremony</h3>
