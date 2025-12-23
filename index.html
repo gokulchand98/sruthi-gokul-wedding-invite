@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sruthi ❤️ Gokul — Forever Begins</title>
+  <title>Gokul ❤️ Sruthi: Forever Begins</title>
 
   <style>
     :root {
-  --bg: #0f1221;
-  --card: #151936;
-  --text: #e9ecff;
-  --muted: #a7b0d6;
-  --accent: #7cf3c6;
-  --accent2: #9da4ff;
-}
-
+      --bg: #fff8e7;          /* light ivory */
+      --card: #ffffff;       /* white cards */
+      --text: #3b2f1c;       /* deep brown */
+      --muted: #7a6a4f;      /* soft muted brown */
+      --accent: #d4af37;     /* gold */
+      --accent2: #c9a24d;    /* soft gold */
+    }
 
     html, body { height: 100%; }
 
@@ -22,8 +21,8 @@
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       background:
-        radial-gradient(1200px 800px at 10% -10%, rgba(124,243,198,0.06), transparent 60%),
-        radial-gradient(1000px 900px at 100% 0%, rgba(157,164,255,0.07), transparent 50%),
+        radial-gradient(900px 600px at 10% 0%, rgba(212,175,55,0.12), transparent 60%),
+        radial-gradient(800px 600px at 90% 10%, rgba(201,162,77,0.10), transparent 60%),
         var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -39,6 +38,8 @@
       border-radius: 16px;
       padding: 22px;
       margin-top: 18px;
+      border: 1px solid rgba(212,175,55,0.22);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
     }
 
     .grid {
@@ -48,9 +49,11 @@
     }
 
     .card {
-      background: #1b1f40;
+      background: var(--card);
       padding: 18px;
-      border-radius: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(212,175,55,0.22);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
     }
 
     section { margin-top: 36px; }
@@ -59,9 +62,10 @@
       display:inline-block;
       padding:4px 10px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,0.2);
+      border:1px solid rgba(212,175,55,0.35);
       font-size:12px;
       color:var(--muted);
+      background: rgba(212,175,55,0.08);
     }
 
     .btns { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
@@ -73,21 +77,21 @@
       border-radius: 10px;
       font-weight: bold;
       cursor: pointer;
-      color: #0b0f1c;
+      color: #2a1f10;
       text-decoration: none;
     }
 
     .btn.secondary {
       background: transparent;
       color: var(--text);
-      border:1px solid rgba(255,255,255,0.2);
+      border:1px solid rgba(212,175,55,0.35);
     }
 
     input, select {
       width: 100%;
       padding: 12px;
       border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(212,175,55,0.35);
       background: transparent;
       color: var(--text);
     }
@@ -106,9 +110,9 @@
     }
 
     .countdown-label {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--accent2);
+      font-size: 15px;        /* slightly smaller */
+      font-weight: 800;       /* bold */
+      color: var(--accent);   /* bright gold */
     }
 
     .countdown-value {
@@ -117,20 +121,16 @@
     }
 
     .calendar-note {
-      background: #1b1f40;
+      background: var(--card);
       padding: 16px;
-      border-radius: 12px;
+      border-radius: 16px;
       margin-top: 24px;
+      border: 1px solid rgba(212,175,55,0.22);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
     }
 
-    .calendar-note h3 {
-      margin: 0 0 6px;
-    }
-
-    .calendar-note p {
-      margin: 0;
-      color: var(--muted);
-    }
+    .calendar-note h3 { margin: 0 0 6px; }
+    .calendar-note p { margin: 0; color: var(--muted); }
   </style>
 </head>
 
@@ -138,7 +138,7 @@
 <div class="container">
 
 <header>
-  <h1>Sruthi ❤️ Gokul — Wedding</h1>
+  <h1>Gokul ❤️ Sruthi: Forever Begins</h1>
   <div class="sub">We can’t wait to celebrate with you</div>
 </header>
 
@@ -146,7 +146,7 @@
   <div class="grid">
     <div class="card">
       <span class="pill">Our Story</span>
-      <p>Two engineers, one repo. After countless moments together, we’re ready to begin our forever.</p>
+      <p>Two hearts, one journey. After countless moments together, we’re ready to begin our forever.</p>
     </div>
 
     <div class="card">
@@ -197,7 +197,6 @@
   </div>
 </section>
 
-<!-- Calendar info added here -->
 <div class="calendar-note">
   <h3>📅 Calendar</h3>
   <p>RSVP “Yes” to receive a calendar invite by email</p>
@@ -226,12 +225,13 @@
 </section>
 
 <footer>
-  © 2026 Sruthi & Gokul
+  © 2026 Gokul & Sruthi
 </footer>
 
 </div>
 
 <script>
+  // Feb 25, 2026 8:40 PM CST = Feb 26, 2026 02:40 UTC
   const target = Date.UTC(2026, 1, 26, 2, 40, 0);
   const countEl = document.getElementById("count");
 
