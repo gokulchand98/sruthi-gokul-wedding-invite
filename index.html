@@ -27,9 +27,32 @@
     }
 
     .container{max-width:980px;margin:auto;padding:24px;}
-    header{text-align:center;padding:32px 0 16px;}
+    header{text-align:center;padding:32px 0 8px;}
     h1{font-size:clamp(28px,5vw,48px);margin:12px 0 6px;}
     .sub{color:var(--muted);}
+
+    /* Language toggle */
+    .lang-toggle{
+      display:flex;
+      justify-content:flex-end;
+      gap:8px;
+      margin: 0 0 10px;
+    }
+    .lang-toggle button{
+      border:1px solid var(--accent);
+      background:transparent;
+      color:var(--text);
+      padding:6px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:600;
+      font-style:normal;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    }
+    .lang-toggle button.active{
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      color:#2a1f10;
+    }
 
     .hero{
       background:var(--card);
@@ -105,6 +128,7 @@
       text-decoration:none;
       box-shadow:0 6px 20px rgba(212,175,55,0.35);
       font-style:normal;
+      display:inline-block;
     }
 
     .btn.secondary{
@@ -122,12 +146,14 @@
       background:transparent;
       color:var(--text);
       font-style:normal;
+      font-weight:500;
       font-family:"Georgia","Times New Roman",serif;
       box-sizing:border-box;
     }
 
     footer{text-align:center;margin:40px 0;color:var(--muted);}
 
+    /* Countdown */
     .countdown{
       margin-top:6px;
       display:flex;
@@ -135,14 +161,12 @@
       align-items:baseline;
       flex-wrap:wrap;
     }
-
     .countdown-label{
       font-size:15px;
       font-weight:800;
       color:var(--accent);
       font-style:normal;
     }
-
     .countdown-value{
       font-size:22px;
       font-weight:700;
@@ -157,40 +181,38 @@
       border:1px solid rgba(212,175,55,0.25);
       box-shadow:0 8px 24px rgba(0,0,0,0.05);
     }
+    .calendar-note h3{margin:0 0 6px;font-style:normal;}
+    .calendar-note p{margin:0;color:var(--muted);font-style:normal;}
+    #rsvpResult{margin-top:10px;font-style:normal;}
 
+    /* Background cards */
     .haldi-bg{
-  background-image:
-    linear-gradient(
-      rgba(255, 245, 215, 0.65),
-      rgba(255, 245, 215, 0.65)
-    ),
-    url("haldi.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+      background-image:
+        linear-gradient(rgba(255,245,215,0.65),rgba(255,245,215,0.65)),
+        url("haldi.jpeg");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
 
-
+    /* Wedding: visible + shifted LEFT (tweak position if you want) */
     .wedding-bg{
-  background-image:
-    linear-gradient(
-      rgba(255, 245, 215, 0.65),
-      rgba(255, 245, 215, 0.65)
-    ),
-    url("vinayaka.jpeg");
+      background-image:
+        linear-gradient(rgba(255,245,215,0.65),rgba(255,245,215,0.65)),
+        url("vinayaka.jpeg");
+      background-size:120%;
+      background-position:35% center;
+      background-repeat:no-repeat;
+    }
 
-  background-size: 120%;        /* 👈 zoom in */
-  background-position: -30% center; /* 👈 NOW shift is visible */
-  background-repeat: no-repeat;
-}
-
-
-
-
+    /* Our Story background */
     .story-bg{
-      background:
-        linear-gradient(rgba(255,248,231,0.92),rgba(255,248,231,0.92)),
-        url("couple.jpeg") center/cover no-repeat;
+      background-image:
+        linear-gradient(rgba(255,248,231,0.80),rgba(255,248,231,0.80)),
+        url("couple.jpeg");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
     }
   </style>
 </head>
@@ -199,9 +221,22 @@
 <div class="container">
 
 <header>
-  <h1>Gokul ❤️ Sruthi: Forever Begins</h1>
-  <div class="sub">We can’t wait to celebrate with you</div>
+  <h1 data-en="Gokul ❤️ Sruthi: Forever Begins"
+      data-te="గోకుల్ ❤️ శ్రుతి: శాశ్వత బంధం">
+    Gokul ❤️ Sruthi: Forever Begins
+  </h1>
+  <div class="sub"
+       data-en="We can’t wait to celebrate with you"
+       data-te="మీతో కలిసి ఈ ఆనందాన్ని జరుపుకోవాలని ఎదురుచూస్తున్నాం">
+    We can’t wait to celebrate with you
+  </div>
 </header>
+
+<!-- Language Toggle -->
+<div class="lang-toggle">
+  <button type="button" onclick="setLang('en')" id="btn-en" class="active">English</button>
+  <button type="button" onclick="setLang('te')" id="btn-te">తెలుగు</button>
+</div>
 
 <div class="hero hero-split">
   <div class="hero-image-left">
@@ -211,131 +246,210 @@
   <div class="hero-content">
     <div class="grid">
       <div class="card story-bg">
-        <span class="pill">Our Story</span>
-        <p>Two hearts, one journey. After countless moments together, we’re ready to begin our forever.</p>
+        <span class="pill"
+              data-en="Our Story"
+              data-te="మన కథ">
+          Our Story
+        </span>
+        <p data-en="Two hearts, one journey. After countless moments together, we’re ready to begin our forever."
+           data-te="రెండు హృదయాలు, ఒకే ప్రయాణం. ఎన్నో అందమైన క్షణాల తరువాత, మన శాశ్వత జీవితం మొదలుపెట్టడానికి సిద్ధంగా ఉన్నాం.">
+          Two hearts, one journey. After countless moments together, we’re ready to begin our forever.
+        </p>
       </div>
 
       <div class="card">
-        <span class="pill">Wedding Date</span>
-        <p><b>Feb 25, 2026 · 8:40 PM</b></p>
+        <span class="pill"
+              data-en="Wedding Date"
+              data-te="వివాహ తేదీ">
+          Wedding Date
+        </span>
+        <p><b data-en="Feb 25, 2026 · 8:40 PM" data-te="ఫిబ్రవరి 25, 2026 · రాత్రి 8:40">Feb 25, 2026 · 8:40 PM</b></p>
         <div class="countdown">
-          <span class="countdown-label">Countdown:</span>
+          <span class="countdown-label" data-en="Countdown:" data-te="కౌంట్‌డౌన్:">Countdown:</span>
           <span id="count" class="countdown-value">Loading…</span>
         </div>
       </div>
 
       <div class="card">
-        <span class="pill">Location</span>
+        <span class="pill" data-en="Location" data-te="స్థలం">Location</span>
         <p>
-          Indian Trails Ranch<br>
+          <span data-en="Indian Trails Ranch" data-te="ఇండియన్ ట్రైల్స్ రాంచ్">Indian Trails Ranch</span><br>
           4320 Co Rd 570,<br>
-          Farmersville, TX 75442
+          <span data-en="Farmersville, Dallas, TX 75442" data-te="ఫార్మర్స్‌విల్లే, టెక్సాస్ 75442">Farmersville, Dallas, TX 75442</span><br>
+          <span data-en="United States" data-te="అమెరికా">United States</span>
         </p>
       </div>
 
       <div class="card">
-        <span class="pill">Contributors</span>
-        <p>Family & Friends ❤️</p>
+        <span class="pill" data-en="Contributors" data-te="కృతజ్ఞతలు">Contributors</span>
+        <p data-en="Family & Friends ❤️" data-te="కుటుంబం & స్నేహితులు ❤️">Family & Friends ❤️</p>
+        <p class="sub" data-en="Thank you for being part of our journey"
+           data-te="మన ప్రయాణంలో భాగమైనందుకు ధన్యవాదాలు">
+          Thank you for being part of our journey
+        </p>
       </div>
     </div>
 
     <div class="btns">
-      <a href="#rsvp" class="btn">RSVP Now</a>
-      <a href="#schedule" class="btn secondary">Schedule & Details</a>
+      <a href="#rsvp" class="btn" data-en="RSVP Now" data-te="RSVP చేయండి">RSVP Now</a>
+      <a href="#schedule" class="btn secondary" data-en="Schedule & Details" data-te="షెడ్యూల్ & వివరాలు">Schedule & Details</a>
     </div>
   </div>
 </div>
 
 <section id="schedule">
-  <h2>📅 Schedule & Event Details</h2>
+  <h2 data-en="📅 Schedule & Event Details" data-te="📅 షెడ్యూల్ & కార్యక్రమ వివరాలు">📅 Schedule & Event Details</h2>
   <div class="grid">
     <div class="card haldi-bg">
-      <h3>🌼 Haldi Ceremony</h3>
-      <p><b>Date & Time:</b> Feb 24, 2026 · 12:00 PM</p>
-      <p><b>Dress Code:</b> Yellow or shades of yellow</p>
+      <h3 data-en="🌼 Haldi Ceremony" data-te="🌼 హల్దీ కార్యక్రమం">🌼 Haldi Ceremony</h3>
+      <p><b data-en="Date & Time:" data-te="తేదీ & సమయం:">Date & Time:</b>
+        <span data-en="Feb 24, 2026 · 12:00 PM" data-te="ఫిబ్రవరి 24, 2026 · మధ్యాహ్నం 12:00">Feb 24, 2026 · 12:00 PM</span>
+      </p>
+      <p><b data-en="Location:" data-te="స్థలం:">Location:</b>
+        <span data-en="Indian Trails Ranch" data-te="ఇండియన్ ట్రైల్స్ రాంచ్">Indian Trails Ranch</span>
+      </p>
+      <p><b data-en="Dress Code:" data-te="డ్రెస్ కోడ్:">Dress Code:</b>
+        <span data-en="Yellow or shades of yellow" data-te="పసుపు లేదా పసుపు షేడ్స్">Yellow or shades of yellow</span>
+      </p>
     </div>
 
     <div class="card wedding-bg">
-      <h3>Wedding Ceremony</h3>
-      <p><b>Date & Time:</b> Feb 25, 2026 · 8:40 PM</p>
-      <p><b>Dress Code:</b> Traditional wedding attire</p>
+      <h3 data-en="Wedding Ceremony" data-te="వివాహ కార్యక్రమం">Wedding Ceremony</h3>
+      <p><b data-en="Date & Time:" data-te="తేదీ & సమయం:">Date & Time:</b>
+        <span data-en="Feb 25, 2026 · 8:40 PM" data-te="ఫిబ్రవరి 25, 2026 · రాత్రి 8:40">Feb 25, 2026 · 8:40 PM</span>
+      </p>
+      <p><b data-en="Location:" data-te="స్థలం:">Location:</b>
+        <span data-en="Indian Trails Ranch" data-te="ఇండియన్ ట్రైల్స్ రాంచ్">Indian Trails Ranch</span>
+      </p>
+      <p><b data-en="Dress Code:" data-te="డ్రెస్ కోడ్:">Dress Code:</b>
+        <span data-en="Traditional wedding attire" data-te="సాంప్రదాయ వివాహ దుస్తులు">Traditional wedding attire</span>
+      </p>
     </div>
   </div>
 </section>
 
 <div class="calendar-note">
-  <h3>📅 Calendar</h3>
-  <p>RSVP “Yes” to receive a calendar invite by email</p>
+  <h3 data-en="📅 Calendar" data-te="📅 క్యాలెండర్">📅 Calendar</h3>
+  <p data-en="RSVP “Yes” to receive a calendar invite by email"
+     data-te="ఇమెయిల్ ద్వారా క్యాలెండర్ ఆహ్వానం పొందడానికి RSVP “Yes” ఎంచుకోండి">
+    RSVP “Yes” to receive a calendar invite by email
+  </p>
 </div>
 
 <section id="rsvp">
-  <h2>🛠️ RSVP</h2>
+  <h2 data-en="🛠️ RSVP" data-te="🛠️ RSVP">🛠️ RSVP</h2>
   <form onsubmit="return false;" class="card">
     <div class="grid">
-      <input id="name" placeholder="Name" required>
-      <input id="email" type="email" placeholder="Email" required>
-      <input id="phone" placeholder="Phone">
-      <input id="guests" type="number" min="1" max="6" value="1">
-      <select id="rsvpSelect">
-        <option value="YES">Yes</option>
-        <option value="NO">No</option>
-        <option value="MAYBE">Maybe</option>
-      </select>
+      <div><input id="name" placeholder="Name" required></div>
+      <div><input id="email" type="email" placeholder="Email" required></div>
+      <div><input id="phone" placeholder="Phone"></div>
+      <div><input id="guests" type="number" min="1" max="6" value="1"></div>
+      <div>
+        <select id="rsvpSelect">
+          <option value="YES">Yes</option>
+          <option value="NO">No</option>
+          <option value="MAYBE">Maybe</option>
+        </select>
+      </div>
     </div>
     <br>
-    <button class="btn" onclick="submitRSVP()">Submit RSVP</button>
+    <button class="btn" onclick="submitRSVP()"
+            data-en="Submit RSVP" data-te="RSVP పంపండి">Submit RSVP</button>
     <div id="rsvpResult"></div>
   </form>
 </section>
 
-<footer>© 2026 Gokul & Sruthi</footer>
+<footer data-en="© 2026 Gokul & Sruthi" data-te="© 2026 గోకుల్ & శ్రుతి">© 2026 Gokul & Sruthi</footer>
+
 </div>
 
 <script>
-  const target = Date.UTC(2026,1,26,2,40,0);
+  // Countdown (Feb 25, 2026 8:40 PM CST = Feb 26, 2026 02:40 UTC)
+  const target = Date.UTC(2026, 1, 26, 2, 40, 0);
   const countEl = document.getElementById("count");
 
-  function tick(){
-    const d = target - Date.now();
-    if(d<=0){countEl.textContent="Today 💍";return;}
-    countEl.textContent =
-      Math.floor(d/86400000)+"d "+
-      Math.floor(d%86400000/3600000)+"h "+
-      Math.floor(d%3600000/60000)+"m "+
-      Math.floor(d%60000/1000)+"s";
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      countEl.textContent = "Today 💍";
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    countEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
   }
-  tick(); setInterval(tick,1000);
+  tick();
+  setInterval(tick, 1000);
 
-  const RSVP_WEB_APP_URL="https://script.google.com/macros/s/AKfycbyG5DIKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
-  async function submitRSVP(){
-    const r=document.getElementById("rsvpResult");
-    const p={
-      name:name.value.trim(),
-      email:email.value.trim(),
-      phone:phone.value.trim(),
-      guests:guests.value,
-      rsvp:rsvpSelect.value
+  // RSVP -> Google Sheets
+  const RSVP_WEB_APP_URL =
+    "https://script.google.com/macros/s/AKfycbyG5DIKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
+
+  async function submitRSVP() {
+    const resultEl = document.getElementById("rsvpResult");
+    resultEl.textContent = "Submitting…";
+
+    const payload = {
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      guests: document.getElementById("guests").value,
+      rsvp: document.getElementById("rsvpSelect").value
     };
-    if(!p.name||!p.email){r.textContent="Enter name & email";return;}
-    try{
-      await fetch(RSVP_WEB_APP_URL,{
-        method:"POST",
-        headers:{"Content-Type":"text/plain;charset=utf-8"},
-        body:JSON.stringify(p)
+
+    if (!payload.name || !payload.email) {
+      resultEl.textContent = "Please enter your name and email.";
+      return;
+    }
+
+    try {
+      const res = await fetch(RSVP_WEB_APP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
       });
-      r.textContent=p.rsvp==="YES"
-        ?"RSVP saved ✅ Calendar invite sent 📅"
-        :"RSVP saved ✅";
-    }catch{
-      r.textContent="RSVP failed ❌";
+
+      if (!res.ok) throw new Error("Network error");
+
+      resultEl.textContent =
+        payload.rsvp === "YES"
+          ? "RSVP saved ✅ You’ll receive a calendar invite by email 📅"
+          : "RSVP saved ✅ Thank you!";
+    } catch (e) {
+      resultEl.textContent =
+        "RSVP failed ❌ Please try again.";
     }
   }
+
+  // Language toggle
+  function setLang(lang) {
+    document.querySelectorAll("[data-en]").forEach(el => {
+      el.textContent = el.dataset[lang];
+    });
+
+    document.getElementById("btn-en").classList.toggle("active", lang === "en");
+    document.getElementById("btn-te").classList.toggle("active", lang === "te");
+
+    localStorage.setItem("inviteLang", lang);
+  }
+
+  const savedLang = localStorage.getItem("inviteLang") || "en";
+  setLang(savedLang);
 </script>
 
-<!-- Mobile: always open from top -->
+<!-- Always start from top on mobile -->
 <script>
-  window.onload=function(){window.scrollTo(0,0);}
-  window.onpageshow=function(e){if(e.persisted)window.scrollTo(0,0);}
+  window.onload = function () {
+    window.scrollTo(0, 0);
+  };
+
+  window.onpageshow = function (event) {
+    if (event.persisted) {
+      window.scrollTo(0, 0);
+    }
+  };
 </script>
 
 </body>
