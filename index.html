@@ -183,7 +183,10 @@
     }
     .calendar-note h3{margin:0 0 6px;font-style:normal;}
     .calendar-note p{margin:0;color:var(--muted);font-style:normal;}
+
     #rsvpResult{margin-top:10px;font-style:normal;}
+    #rsvpTools{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;}
+    .tiny-note{margin-top:8px; color:var(--muted); font-style:normal; font-size:14px;}
 
     /* Background cards */
     .haldi-bg{
@@ -195,17 +198,15 @@
       background-repeat:no-repeat;
     }
 
-    /* Wedding: visible + shifted LEFT (tweak position if you want) */
     .wedding-bg{
       background-image:
         linear-gradient(rgba(255,245,215,0.65),rgba(255,245,215,0.65)),
         url("vinayaka.jpeg");
       background-size:120%;
-      background-position:35% center;
+      background-position:35% center; /* shift left/right as you like */
       background-repeat:no-repeat;
     }
 
-    /* Our Story background */
     .story-bg{
       background-image:
         linear-gradient(rgba(255,248,231,0.80),rgba(255,248,231,0.80)),
@@ -222,7 +223,7 @@
 
 <header>
   <h1 data-en="Gokul ❤️ Sruthi: Forever Begins"
-      data-te="గోకుల్ ❤️ శ్రుతి : వివాహ ఆహ్వానం">
+      data-te="గోకుల్ ❤️ శ్రుతి: శాశ్వత బంధం">
     Gokul ❤️ Sruthi: Forever Begins
   </h1>
   <div class="sub"
@@ -232,7 +233,6 @@
   </div>
 </header>
 
-<!-- Language Toggle -->
 <div class="lang-toggle">
   <button type="button" onclick="setLang('en')" id="btn-en" class="active">English</button>
   <button type="button" onclick="setLang('te')" id="btn-te">తెలుగు</button>
@@ -246,11 +246,7 @@
   <div class="hero-content">
     <div class="grid">
       <div class="card story-bg">
-        <span class="pill"
-              data-en="Our Story"
-              data-te="మన కథ">
-          Our Story
-        </span>
+        <span class="pill" data-en="Our Story" data-te="మన కథ">Our Story</span>
         <p data-en="Two hearts, one journey. After countless moments together, we’re ready to begin our forever."
            data-te="రెండు హృదయాలు, ఒకే ప్రయాణం. ఎన్నో అందమైన క్షణాల తరువాత, మన శాశ్వత జీవితం మొదలుపెట్టడానికి సిద్ధంగా ఉన్నాం.">
           Two hearts, one journey. After countless moments together, we’re ready to begin our forever.
@@ -258,11 +254,7 @@
       </div>
 
       <div class="card">
-        <span class="pill"
-              data-en="Wedding Date"
-              data-te="వివాహ తేదీ">
-          Wedding Date
-        </span>
+        <span class="pill" data-en="Wedding Date" data-te="వివాహ తేదీ">Wedding Date</span>
         <p><b data-en="Feb 25, 2026 · 8:40 PM" data-te="ఫిబ్రవరి 25, 2026 · రాత్రి 8:40">Feb 25, 2026 · 8:40 PM</b></p>
         <div class="countdown">
           <span class="countdown-label" data-en="Countdown:" data-te="కౌంట్‌డౌన్:">Countdown:</span>
@@ -271,11 +263,11 @@
       </div>
 
       <div class="card">
-        <span class="pill" data-en="Location" data-te="వేదిక">Location</span>
+        <span class="pill" data-en="Location" data-te="స్థలం">Location</span>
         <p>
           <span data-en="Indian Trails Ranch" data-te="ఇండియన్ ట్రైల్స్ రాంచ్">Indian Trails Ranch</span><br>
           4320 Co Rd 570,<br>
-          <span data-en="Farmersville, Dallas, TX 75442" data-te="Faemersville, Dallas, Tx 75442">Farmersville, Dallas, TX 75442</span><br>
+          <span data-en="Farmersville, Dallas, TX 75442" data-te="ఫార్మర్స్‌విల్లే, టెక్సాస్ 75442">Farmersville, Dallas, TX 75442</span><br>
           <span data-en="United States" data-te="అమెరికా">United States</span>
         </p>
       </div>
@@ -283,7 +275,8 @@
       <div class="card">
         <span class="pill" data-en="Contributors" data-te="కృతజ్ఞతలు">Contributors</span>
         <p data-en="Family & Friends ❤️" data-te="కుటుంబం & స్నేహితులు ❤️">Family & Friends ❤️</p>
-        <p class="sub" data-en="Thank you for being part of our journey"
+        <p class="sub"
+           data-en="Thank you for being part of our journey"
            data-te="మన ప్రయాణంలో భాగమైనందుకు ధన్యవాదాలు">
           Thank you for being part of our journey
         </p>
@@ -301,7 +294,7 @@
   <h2 data-en="📅 Schedule & Event Details" data-te="📅 షెడ్యూల్ & కార్యక్రమ వివరాలు">📅 Schedule & Event Details</h2>
   <div class="grid">
     <div class="card haldi-bg">
-      <h3 data-en="🌼 Haldi Ceremony" data-te="🌼 హల్దీ">🌼 Haldi Ceremony</h3>
+      <h3 data-en="🌼 Haldi Ceremony" data-te="🌼 హల్దీ కార్యక్రమం">🌼 Haldi Ceremony</h3>
       <p><b data-en="Date & Time:" data-te="తేదీ & సమయం:">Date & Time:</b>
         <span data-en="Feb 24, 2026 · 12:00 PM" data-te="ఫిబ్రవరి 24, 2026 · మధ్యాహ్నం 12:00">Feb 24, 2026 · 12:00 PM</span>
       </p>
@@ -314,7 +307,7 @@
     </div>
 
     <div class="card wedding-bg">
-      <h3 data-en="Wedding Ceremony" data-te="శుభ వివాహ వేడుక">Wedding Ceremony</h3>
+      <h3 data-en="Wedding Ceremony" data-te="వివాహ కార్యక్రమం">Wedding Ceremony</h3>
       <p><b data-en="Date & Time:" data-te="తేదీ & సమయం:">Date & Time:</b>
         <span data-en="Feb 25, 2026 · 8:40 PM" data-te="ఫిబ్రవరి 25, 2026 · రాత్రి 8:40">Feb 25, 2026 · 8:40 PM</span>
       </p>
@@ -328,9 +321,33 @@
   </div>
 </section>
 
+<div class="calendar-note">
+  <h3 data-en="📅 Calendar" data-te="📅 క్యాలెండర్">📅 Calendar</h3>
+  <p data-en="RSVP “Yes” to receive a calendar invite by email"
+     data-te="ఇమెయిల్ ద్వారా క్యాలెండర్ ఆహ్వానం పొందడానికి RSVP “Yes” ఎంచుకోండి">
+    RSVP “Yes” to receive a calendar invite by email
+  </p>
+</div>
+
 <section id="rsvp">
-  <h2 data-en="Please RSVP Here" data-te=" Please RSVP Here"> RSVP</h2>
-  <form onsubmit="return false;" class="card">
+  <h2 data-en="🛠️ RSVP" data-te="🛠️ RSVP">🛠️ RSVP</h2>
+
+  <!-- Load existing RSVP (for guests on another device/browser) -->
+  <div class="card" style="margin-bottom:16px;">
+    <div class="grid">
+      <div>
+        <input id="lookupEmail" type="email" placeholder="Enter your email to load your RSVP">
+      </div>
+      <div>
+        <button class="btn secondary" type="button" onclick="loadByEmail()">Load RSVP</button>
+      </div>
+    </div>
+    <div class="tiny-note">
+      If you already RSVP’d before, you can load it here (especially if you’re using a different phone/laptop).
+    </div>
+  </div>
+
+  <form onsubmit="return false;" class="card" id="rsvpForm">
     <div class="grid">
       <div><input id="name" placeholder="Name" required></div>
       <div><input id="email" type="email" placeholder="Email" required></div>
@@ -344,9 +361,12 @@
         </select>
       </div>
     </div>
-    <br>
-    <button class="btn" onclick="submitRSVP()"
-            data-en="Submit RSVP" data-te="RSVP పంపండి">Submit RSVP</button>
+
+    <div id="rsvpTools">
+      <button class="btn" type="button" onclick="submitRSVP()" id="submitBtn">Submit RSVP</button>
+      <button class="btn secondary" type="button" onclick="enableEdit()" id="editBtn" style="display:none;">Edit RSVP</button>
+    </div>
+
     <div id="rsvpResult"></div>
   </form>
 </section>
@@ -362,22 +382,76 @@
 
   function tick() {
     const diff = target - Date.now();
-    if (diff <= 0) {
-      countEl.textContent = "Today 💍";
-      return;
-    }
+    if (diff <= 0) { countEl.textContent = "Today 💍"; return; }
     const d = Math.floor(diff / 86400000);
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
     const s = Math.floor((diff % 60000) / 1000);
     countEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
   }
-  tick();
-  setInterval(tick, 1000);
+  tick(); setInterval(tick, 1000);
 
-  // RSVP -> Google Sheets
+  // Google Apps Script Web App
   const RSVP_WEB_APP_URL =
     "https://script.google.com/macros/s/AKfycbyG5DIKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
+
+  function setFormDisabled(disabled) {
+    ["name","email","phone","guests","rsvpSelect"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.disabled = disabled;
+    });
+    document.getElementById("submitBtn").disabled = disabled;
+  }
+
+  function enableEdit() {
+    setFormDisabled(false);
+    document.getElementById("editBtn").style.display = "none";
+    document.getElementById("rsvpResult").textContent = "You can edit your RSVP and submit again ✅";
+  }
+
+  function fillForm(data) {
+    document.getElementById("name").value = data.name || "";
+    document.getElementById("email").value = data.email || "";
+    document.getElementById("phone").value = data.phone || "";
+    document.getElementById("guests").value = data.guests || 1;
+    document.getElementById("rsvpSelect").value = (data.rsvp || "YES").toUpperCase();
+
+    // lock form by default + show edit button
+    setFormDisabled(true);
+    document.getElementById("editBtn").style.display = "inline-block";
+  }
+
+  async function fetchRSVPByEmail(email) {
+    const resultEl = document.getElementById("rsvpResult");
+    resultEl.textContent = "Loading your RSVP…";
+
+    try {
+      const res = await fetch(`${RSVP_WEB_APP_URL}?email=${encodeURIComponent(email)}`, { method: "GET" });
+      if (!res.ok) throw new Error("Network error");
+      const data = await res.json();
+
+      if (!data || !data.found) {
+        resultEl.textContent = "No RSVP found for this email yet. Please submit your RSVP below.";
+        setFormDisabled(false);
+        document.getElementById("editBtn").style.display = "none";
+        return;
+      }
+
+      fillForm(data);
+      resultEl.textContent = "RSVP loaded ✅ (Click “Edit RSVP” to make changes)";
+      localStorage.setItem("lastRsvpEmail", email);
+    } catch (e) {
+      resultEl.textContent = "Could not load RSVP ❌ (Check Apps Script doGet is enabled)";
+      setFormDisabled(false);
+      document.getElementById("editBtn").style.display = "none";
+    }
+  }
+
+  function loadByEmail() {
+    const email = document.getElementById("lookupEmail").value.trim();
+    if (!email) return;
+    fetchRSVPByEmail(email);
+  }
 
   async function submitRSVP() {
     const resultEl = document.getElementById("rsvpResult");
@@ -402,46 +476,50 @@
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload)
       });
-
       if (!res.ok) throw new Error("Network error");
+
+      // Save email locally so this browser can auto-load next time
+      localStorage.setItem("lastRsvpEmail", payload.email);
+
+      // Lock + show edit
+      fillForm(payload);
 
       resultEl.textContent =
         payload.rsvp === "YES"
-          ? "RSVP saved ✅ You’ll receive a calendar invite by email 📅"
-          : "RSVP saved ✅ Thank you!";
+          ? "RSVP saved ✅ You’ll receive a calendar invite by email 📅 (Click “Edit RSVP” to change)"
+          : "RSVP saved ✅ (Click “Edit RSVP” to change)";
     } catch (e) {
-      resultEl.textContent =
-        "RSVP failed ❌ Please try again.";
+      resultEl.textContent = "RSVP failed ❌ Please try again.";
+      setFormDisabled(false);
+      document.getElementById("editBtn").style.display = "none";
     }
   }
 
   // Language toggle
   function setLang(lang) {
-    document.querySelectorAll("[data-en]").forEach(el => {
-      el.textContent = el.dataset[lang];
-    });
-
+    document.querySelectorAll("[data-en]").forEach(el => { el.textContent = el.dataset[lang]; });
     document.getElementById("btn-en").classList.toggle("active", lang === "en");
     document.getElementById("btn-te").classList.toggle("active", lang === "te");
-
     localStorage.setItem("inviteLang", lang);
   }
-
   const savedLang = localStorage.getItem("inviteLang") || "en";
   setLang(savedLang);
+
+  // Auto-load RSVP in the same browser/device if previously submitted
+  const lastEmail = localStorage.getItem("lastRsvpEmail");
+  if (lastEmail) {
+    // also prefill lookup box for convenience
+    const lookup = document.getElementById("lookupEmail");
+    if (lookup) lookup.value = lastEmail;
+    // try auto-load in background
+    fetchRSVPByEmail(lastEmail);
+  }
 </script>
 
 <!-- Always start from top on mobile -->
 <script>
-  window.onload = function () {
-    window.scrollTo(0, 0);
-  };
-
-  window.onpageshow = function (event) {
-    if (event.persisted) {
-      window.scrollTo(0, 0);
-    }
-  };
+  window.onload = function () { window.scrollTo(0, 0); };
+  window.onpageshow = function (event) { if (event.persisted) window.scrollTo(0, 0); };
 </script>
 
 </body>
