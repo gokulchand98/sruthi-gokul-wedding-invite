@@ -118,7 +118,6 @@
     .calendar-note p{margin:0;color:var(--muted);font-style:normal;}
 
     #rsvpResult{margin-top:10px;font-style:normal;}
-    #rsvpTools{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;}
     .tiny-note{margin-top:8px;color:var(--muted);font-style:normal;font-size:14px;}
     .field-label{display:block;margin:0 0 6px;font-style:normal;font-weight:700;color:var(--text);}
 
@@ -265,13 +264,6 @@
 <section id="rsvp">
   <h2 data-en="🛠️ RSVP" data-te="🛠️ RSVP">🛠️ RSVP</h2>
 
-  <div class="card" style="margin-bottom:16px;">
-    <div class="grid">
-      <div><input id="lookupEmail" type="email" placeholder="Enter your email to load your RSVP"></div>
-      <div><button class="btn secondary" type="button" onclick="loadByEmail()">Load RSVP</button></div>
-    </div>
-  </div>
-
   <form onsubmit="return false;" class="card" id="rsvpForm">
     <div class="grid">
       <div><input id="name" placeholder="Name" required></div>
@@ -307,9 +299,8 @@
       </div>
     </div>
 
-    <div id="rsvpTools">
+    <div style="margin-top:12px;">
       <button class="btn" type="button" onclick="submitRSVP()" id="submitBtn">Submit RSVP</button>
-      <button class="btn secondary" type="button" onclick="enableEdit()" id="editBtn" style="display:none;">Edit RSVP</button>
     </div>
 
     <div id="rsvpResult"></div>
@@ -366,65 +357,6 @@
   document.getElementById("adults")?.addEventListener("input", syncTotalFromParts);
   document.getElementById("kids")?.addEventListener("input", syncTotalFromParts);
 
-  function setFormDisabled(disabled) {
-    ["name","email","phone","adults","kids","guests","rsvpSelect"].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.disabled = disabled;
-    });
-    document.getElementById("submitBtn").disabled = disabled;
-  }
-
-  function enableEdit() {
-    setFormDisabled(false);
-    document.getElementById("editBtn").style.display = "none";
-    document.getElementById("rsvpResult").textContent = "You can edit your RSVP and submit again ✅";
-  }
-
-  function fillForm(data) {
-    document.getElementById("name").value = data.name || "";
-    document.getElementById("email").value = data.email || "";
-    document.getElementById("phone").value = data.phone || "";
-    document.getElementById("adults").value = (data.adults ?? "");
-    document.getElementById("kids").value = (data.kids ?? "");
-    document.getElementById("guests").value = (data.guests ?? 1);
-    document.getElementById("rsvpSelect").value = (data.rsvp || "YES").toUpperCase();
-
-    setFormDisabled(true);
-    document.getElementById("editBtn").style.display = "inline-block";
-  }
-
-  async function fetchRSVPByEmail(email) {
-    const resultEl = document.getElementById("rsvpResult");
-    resultEl.textContent = "Loading your RSVP…";
-
-    try {
-      const res = await fetch(`${RSVP_WEB_APP_URL}?email=${encodeURIComponent(email)}`, { method: "GET" });
-      if (!res.ok) throw new Error("Network error");
-      const data = await res.json();
-
-      if (!data || !data.found) {
-        resultEl.textContent = "No RSVP found for this email yet. Please submit your RSVP below.";
-        setFormDisabled(false);
-        document.getElementById("editBtn").style.display = "none";
-        return;
-      }
-
-      fillForm(data);
-      resultEl.textContent = "RSVP loaded ✅ (Click “Edit RSVP” to make changes)";
-      localStorage.setItem("lastRsvpEmail", email);
-    } catch (e) {
-      resultEl.textContent = "Could not load RSVP ❌ (Check Apps Script deployment + permissions)";
-      setFormDisabled(false);
-      document.getElementById("editBtn").style.display = "none";
-    }
-  }
-
-  function loadByEmail() {
-    const email = document.getElementById("lookupEmail").value.trim();
-    if (!email) return;
-    fetchRSVPByEmail(email);
-  }
-
   async function submitRSVP() {
     const resultEl = document.getElementById("rsvpResult");
     resultEl.textContent = "Submitting…";
@@ -452,17 +384,12 @@
       });
       if (!res.ok) throw new Error("Network error");
 
-      localStorage.setItem("lastRsvpEmail", payload.email);
-      fillForm(payload);
-
       resultEl.textContent =
         payload.rsvp === "YES"
-          ? "RSVP saved ✅ Calendar invite will arrive by email 📅 (Click “Edit RSVP” to change)"
-          : "RSVP saved ✅ (Click “Edit RSVP” to change)";
+          ? "RSVP saved ✅ Calendar invite will arrive by email 📅"
+          : "RSVP saved ✅ Thank you!";
     } catch (e) {
       resultEl.textContent = "RSVP failed ❌ Please try again.";
-      setFormDisabled(false);
-      document.getElementById("editBtn").style.display = "none";
     }
   }
 
@@ -475,14 +402,6 @@
   }
   const savedLang = localStorage.getItem("inviteLang") || "en";
   setLang(savedLang);
-
-  // Auto-load RSVP (same device)
-  const lastEmail = localStorage.getItem("lastRsvpEmail");
-  if (lastEmail) {
-    const lookup = document.getElementById("lookupEmail");
-    if (lookup) lookup.value = lastEmail;
-    fetchRSVPByEmail(lastEmail);
-  }
 </script>
 
 <!-- Always start from top on mobile -->
