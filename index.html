@@ -318,34 +318,34 @@
     <div class="grid">
       <div class="side-field">
         <div class="side-label">Name</div>
-        <input id="name" placeholder="Enter your name" required>
+        <input id="name" required>
       </div>
 
       <div class="side-field">
         <div class="side-label">Email</div>
-        <input id="email" type="email" placeholder="Enter your email" required>
+        <input id="email" type="email" required>
       </div>
 
       <div class="side-field">
         <div class="side-label">Phone</div>
-        <input id="phone" placeholder="Enter your phone number">
+        <input id="phone">
       </div>
 
       <div>
         <label class="field-label">Adults</label>
-        <input id="adults" type="number" inputmode="numeric" min="0" max="20" placeholder="Adults (e.g., 2)">
+        <input id="adults" type="number" inputmode="numeric" min="0" max="20" >
       </div>
 
       <div>
         <label class="field-label">Kids</label>
-        <input id="kids" type="number" inputmode="numeric" min="0" max="20" placeholder="Kids (e.g., 1)">
+        <input id="kids" type="number" inputmode="numeric" min="0" max="20" >
       </div>
 
       <div>
         <label class="field-label">Total Guests</label>
         <div class="stepper">
           <button type="button" class="stepper-btn" onclick="stepGuests(-1)">−</button>
-          <input id="guests" type="number" inputmode="numeric" min="1" max="25" placeholder="Total (e.g., 3)">
+          <input id="guests" type="number" inputmode="numeric" min="1" max="25" >
           <button type="button" class="stepper-btn" onclick="stepGuests(1)">+</button>
         </div>
       </div>
@@ -354,8 +354,8 @@
         <label class="field-label">RSVP</label>
         <select id="rsvpSelect">
           <option value="YES">Yes ❤️</option>
-          <option value="NO">No 😢</option>
-          <option value="MAYBE">Maybe 🙂</option>
+          <option value="NO">No 😕</option>
+          <option value="MAYBE">Maybe 😶</option>
         </select>
       </div>
     </div>
