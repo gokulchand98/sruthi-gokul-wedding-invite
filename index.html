@@ -111,7 +111,31 @@
 
     #rsvpResult{margin-top:10px;font-style:normal;}
     .tiny-note{margin-top:8px;color:var(--muted);font-style:normal;font-size:14px;}
-    .field-label{display:block;margin:0 0 6px;font-style:normal;font-weight:700;color:var(--text);}
+
+    /* Smaller labels for Adults/Kids/Total */
+    .field-label{
+      display:block;
+      margin:0 0 6px;
+      font-style:normal;
+      font-weight:700;
+      color:var(--text);
+      font-size:13px; /* reduced */
+    }
+
+    /* Side labels (Name/Email/Phone) */
+    .side-field{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .side-field .side-label{
+      min-width:90px;
+      font-style:normal;
+      font-weight:700;
+      font-size:13px;
+      color:var(--text);
+      white-space:nowrap;
+    }
 
     .stepper{display:flex;gap:10px;align-items:center;}
     .stepper input{flex:1;}
@@ -146,6 +170,12 @@
         linear-gradient(rgba(255,248,231,0.80),rgba(255,248,231,0.80)),
         url("couple.jpeg");
       background-size:cover;background-position:center;background-repeat:no-repeat;
+    }
+
+    /* Mobile: stack side labels */
+    @media (max-width: 520px){
+      .side-field{flex-direction:column;align-items:stretch;gap:6px;}
+      .side-field .side-label{min-width:auto;}
     }
   </style>
 </head>
@@ -250,9 +280,23 @@
 
   <form onsubmit="return false;" class="card" id="rsvpForm">
     <div class="grid">
-      <div><input id="name" placeholder="Name" required></div>
-      <div><input id="email" type="email" placeholder="Email" required></div>
-      <div><input id="phone" placeholder="Phone"></div>
+      <!-- Name -->
+      <div class="side-field">
+        <div class="side-label">Name</div>
+        <input id="name" placeholder="Enter your name" required>
+      </div>
+
+      <!-- Email -->
+      <div class="side-field">
+        <div class="side-label">Email</div>
+        <input id="email" type="email" placeholder="Enter your email" required>
+      </div>
+
+      <!-- Phone -->
+      <div class="side-field">
+        <div class="side-label">Phone</div>
+        <input id="phone" placeholder="Enter your phone number">
+      </div>
 
       <div>
         <label class="field-label">Adults</label>
@@ -275,10 +319,11 @@
       </div>
 
       <div>
+        <label class="field-label">RSVP</label>
         <select id="rsvpSelect">
-          <option value="YES">Yes</option>
-          <option value="NO">No</option>
-          <option value="MAYBE">Maybe</option>
+          <option value="YES">Yes ❤️</option>
+          <option value="NO">No 😢</option>
+          <option value="MAYBE">Maybe 🙂</option>
         </select>
       </div>
     </div>
@@ -310,9 +355,9 @@
   }
   tick(); setInterval(tick, 1000);
 
-  // RSVP Web App URL
+  // RSVP Web App URL (keep your correct URL here)
   const RSVP_WEB_APP_URL =
-    "https://script.google.com/macros/s/AKfycbyG5DIKKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
+    "https://script.google.com/macros/s/AKfycbyG5DIKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
 
   function safeInt(v) {
     const n = parseInt(String(v ?? "").trim(), 10);
@@ -368,10 +413,7 @@
       });
       if (!res.ok) throw new Error("Network error");
 
-      resultEl.textContent =
-        payload.rsvp === "YES"
-          ? "RSVP saved ✅ Thank you!"
-          : "RSVP saved ✅ Thank you!";
+      resultEl.textContent = "RSVP saved ✅ Thank you!";
     } catch (e) {
       resultEl.textContent = "RSVP failed ❌ Please try again.";
     }
