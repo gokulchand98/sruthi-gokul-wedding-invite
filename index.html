@@ -109,14 +109,6 @@
     .countdown-label{font-size:15px;font-weight:800;color:var(--accent);font-style:normal;}
     .countdown-value{font-size:22px;font-weight:700;font-style:normal;}
 
-    .calendar-note{
-      background:var(--card);padding:18px;border-radius:16px;
-      margin-top:24px;border:1px solid rgba(212,175,55,0.25);
-      box-shadow:0 8px 24px rgba(0,0,0,0.05);
-    }
-    .calendar-note h3{margin:0 0 6px;font-style:normal;}
-    .calendar-note p{margin:0;color:var(--muted);font-style:normal;}
-
     #rsvpResult{margin-top:10px;font-style:normal;}
     .tiny-note{margin-top:8px;color:var(--muted);font-style:normal;font-size:14px;}
     .field-label{display:block;margin:0 0 6px;font-style:normal;font-weight:700;color:var(--text);}
@@ -165,7 +157,7 @@
   <h1 data-en="Gokul ❤️ Sruthi: Forever Begins" data-te="గోకుల్ ❤️ శ్రుతి: శాశ్వత బంధం">
     Gokul ❤️ Sruthi: Forever Begins
   </h1>
-  <div class="sub" data-en="We can’t wait to celebrate with you" data-te="మీతో కలిసి ఈ ఆనందాన్ని జరుపుకోవాలని ఎదురుచూస్తున్నాం">
+  <div class="sub" data-en="We can’t wait to celebrate with you" data-te="మీతో కలిసి ఈ ఆనందాన్ని జరుపుకోవాలని ఎదురు చూస్తున్నాం">
     We can’t wait to celebrate with you
   </div>
 </header>
@@ -253,14 +245,6 @@
   </div>
 </section>
 
-<div class="calendar-note">
-  <h3 data-en="📅 Calendar" data-te="📅 క్యాలెండర్">📅 Calendar</h3>
-  <p data-en="RSVP “Yes” to receive a calendar invite by email"
-     data-te="ఇమెయిల్ ద్వారా క్యాలెండర్ ఆహ్వానం పొందడానికి RSVP “Yes” ఎంచుకోండి">
-    RSVP “Yes” to receive a calendar invite by email
-  </p>
-</div>
-
 <section id="rsvp">
   <h2 data-en="🛠️ RSVP" data-te="🛠️ RSVP">🛠️ RSVP</h2>
 
@@ -328,7 +312,7 @@
 
   // RSVP Web App URL
   const RSVP_WEB_APP_URL =
-    "https://script.google.com/macros/s/AKfycbyG5DIKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
+    "https://script.google.com/macros/s/AKfycbyG5DIKKxlExF1QKptf0ugWbg18WOye4QDUI6moRn1XmxXEORMjSSkMqBPWaZXxFeDI0ig/exec";
 
   function safeInt(v) {
     const n = parseInt(String(v ?? "").trim(), 10);
@@ -386,7 +370,7 @@
 
       resultEl.textContent =
         payload.rsvp === "YES"
-          ? "RSVP saved ✅ Calendar invite will arrive by email 📅"
+          ? "RSVP saved ✅ Thank you!"
           : "RSVP saved ✅ Thank you!";
     } catch (e) {
       resultEl.textContent = "RSVP failed ❌ Please try again.";
